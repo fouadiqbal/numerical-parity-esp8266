@@ -1,0 +1,191 @@
+{
+  "phase": 6,
+  "experiment": "paired_forecast_error_comparison",
+  "loss": "absolute error in normalized target units",
+  "difference_definition": "absolute error of compact edge model minus comparator",
+  "reference_model": "compact_edge_linear_float32",
+  "observations": 2000,
+  "bootstrap": {
+    "method": "moving-block percentile confidence interval",
+    "replicates": 10000,
+    "block_length": 48,
+    "block_interpretation": "one day of half-hourly observations",
+    "seed_base": 42
+  },
+  "loss_differential_test": {
+    "method": "Diebold-Mariano-style mean loss-differential test with Bartlett Newey-West HAC variance",
+    "hac_lag": 48,
+    "reference_distribution": "asymptotic standard normal",
+    "multiple_comparison_adjustment": "Holm over five reference comparisons",
+    "alpha": 0.05
+  },
+  "comparisons": [
+    {
+      "reference": "compact_edge_linear_float32",
+      "comparator": "linear_regression",
+      "paired_observations": 2000,
+      "reference_mae": 0.13385784686683574,
+      "comparator_mae": 0.13385784693500005,
+      "mae_difference_reference_minus_comparator": -6.816430578315824e-11,
+      "relative_mae_change_percent": -5.092290616048688e-08,
+      "moving_block_bootstrap": {
+        "replicates": 10000,
+        "block_length": 48,
+        "ci95_lower": -4.4444916707381263e-10,
+        "ci95_upper": 3.7849258673061657e-10,
+        "ci_excludes_zero": false
+      },
+      "paired_outcomes": {
+        "reference_lower_absolute_error": 1009,
+        "equal_absolute_error": 0,
+        "reference_higher_absolute_error": 991
+      },
+      "hac_absolute_loss_test": {
+        "mean_loss_difference": -6.816430578315824e-11,
+        "hac_lag": 48,
+        "long_run_variance": 8.788392081812543e-17,
+        "standard_error": 2.0962337753471754e-10,
+        "z_statistic": -0.3251751144591159,
+        "two_sided_p_value_unadjusted": 0.7450485418970505,
+        "holm_adjusted_p_value": 0.7450485418970505,
+        "significant_at_0_05_after_holm": false
+      },
+      "interpretation": "negative favors compact edge model; positive favors comparator; paired difference is not statistically distinguishable at alpha=0.05 under the stated HAC/Holm procedure; observed direction=compact"
+    },
+    {
+      "reference": "compact_edge_linear_float32",
+      "comparator": "random_forest",
+      "paired_observations": 2000,
+      "reference_mae": 0.13385784686683574,
+      "comparator_mae": 0.13523588843762116,
+      "mae_difference_reference_minus_comparator": -0.0013780415707854018,
+      "relative_mae_change_percent": -1.0189910287172304,
+      "moving_block_bootstrap": {
+        "replicates": 10000,
+        "block_length": 48,
+        "ci95_lower": -0.0024900000512395755,
+        "ci95_upper": -0.0001797283228279809,
+        "ci_excludes_zero": true
+      },
+      "paired_outcomes": {
+        "reference_lower_absolute_error": 1035,
+        "equal_absolute_error": 0,
+        "reference_higher_absolute_error": 965
+      },
+      "hac_absolute_loss_test": {
+        "mean_loss_difference": -0.0013780415707854018,
+        "hac_lag": 48,
+        "long_run_variance": 0.0006699332933114725,
+        "standard_error": 0.0005787630315213095,
+        "z_statistic": -2.381011736639685,
+        "two_sided_p_value_unadjusted": 0.017265161860646156,
+        "holm_adjusted_p_value": 0.03453032372129231,
+        "significant_at_0_05_after_holm": true
+      },
+      "interpretation": "negative favors compact edge model; positive favors comparator; paired difference is statistically distinguishable at alpha=0.05 under the stated HAC/Holm procedure; observed direction=compact"
+    },
+    {
+      "reference": "compact_edge_linear_float32",
+      "comparator": "hist_gradient_boosting",
+      "paired_observations": 2000,
+      "reference_mae": 0.13385784686683574,
+      "comparator_mae": 0.14011567369971004,
+      "mae_difference_reference_minus_comparator": -0.006257826832874273,
+      "relative_mae_change_percent": -4.466186164358588,
+      "moving_block_bootstrap": {
+        "replicates": 10000,
+        "block_length": 48,
+        "ci95_lower": -0.008474791609034263,
+        "ci95_upper": -0.00391091148865566,
+        "ci_excludes_zero": true
+      },
+      "paired_outcomes": {
+        "reference_lower_absolute_error": 1121,
+        "equal_absolute_error": 0,
+        "reference_higher_absolute_error": 879
+      },
+      "hac_absolute_loss_test": {
+        "mean_loss_difference": -0.006257826832874273,
+        "hac_lag": 48,
+        "long_run_variance": 0.002678947232875618,
+        "standard_error": 0.0011573563048766827,
+        "z_statistic": -5.407001116688131,
+        "two_sided_p_value_unadjusted": 6.408874397606293e-08,
+        "holm_adjusted_p_value": 1.9226623192818876e-07,
+        "significant_at_0_05_after_holm": true
+      },
+      "interpretation": "negative favors compact edge model; positive favors comparator; paired difference is statistically distinguishable at alpha=0.05 under the stated HAC/Holm procedure; observed direction=compact"
+    },
+    {
+      "reference": "compact_edge_linear_float32",
+      "comparator": "seasonal_naive_lag_48",
+      "paired_observations": 2000,
+      "reference_mae": 0.13385784686683574,
+      "comparator_mae": 0.18880916134892167,
+      "mae_difference_reference_minus_comparator": -0.0549513144820859,
+      "relative_mae_change_percent": -29.104156858435058,
+      "moving_block_bootstrap": {
+        "replicates": 10000,
+        "block_length": 48,
+        "ci95_lower": -0.05999931061670265,
+        "ci95_upper": -0.0500358812530598,
+        "ci_excludes_zero": true
+      },
+      "paired_outcomes": {
+        "reference_lower_absolute_error": 1304,
+        "equal_absolute_error": 0,
+        "reference_higher_absolute_error": 696
+      },
+      "hac_absolute_loss_test": {
+        "mean_loss_difference": -0.0549513144820859,
+        "hac_lag": 48,
+        "long_run_variance": 0.013685574986779428,
+        "standard_error": 0.002615872224209301,
+        "z_statistic": -21.006880218966362,
+        "two_sided_p_value_unadjusted": 5.6742369053468774e-98,
+        "holm_adjusted_p_value": 2.269694762138751e-97,
+        "significant_at_0_05_after_holm": true
+      },
+      "interpretation": "negative favors compact edge model; positive favors comparator; paired difference is statistically distinguishable at alpha=0.05 under the stated HAC/Holm procedure; observed direction=compact"
+    },
+    {
+      "reference": "compact_edge_linear_float32",
+      "comparator": "persistence_lag_1",
+      "paired_observations": 2000,
+      "reference_mae": 0.13385784686683574,
+      "comparator_mae": 0.19149980215113982,
+      "mae_difference_reference_minus_comparator": -0.05764195528430406,
+      "relative_mae_change_percent": -30.100268844565473,
+      "moving_block_bootstrap": {
+        "replicates": 10000,
+        "block_length": 48,
+        "ci95_lower": -0.06236359640993138,
+        "ci95_upper": -0.05235799359862162,
+        "ci_excludes_zero": true
+      },
+      "paired_outcomes": {
+        "reference_lower_absolute_error": 1320,
+        "equal_absolute_error": 0,
+        "reference_higher_absolute_error": 680
+      },
+      "hac_absolute_loss_test": {
+        "mean_loss_difference": -0.05764195528430406,
+        "hac_lag": 48,
+        "long_run_variance": 0.01277034666376114,
+        "standard_error": 0.00252689005140322,
+        "z_statistic": -22.811421989767467,
+        "two_sided_p_value_unadjusted": 3.5318922397001686e-115,
+        "holm_adjusted_p_value": 1.7659461198500843e-114,
+        "significant_at_0_05_after_holm": true
+      },
+      "interpretation": "negative favors compact edge model; positive favors comparator; paired difference is statistically distinguishable at alpha=0.05 under the stated HAC/Holm procedure; observed direction=compact"
+    }
+  ],
+  "limitations": [
+    "The five model fits use expanding, overlapping training histories.",
+    "Only 2,000 predictions from a short normalized case study are tested.",
+    "Block length and HAC lag were fixed at one day rather than selected by an independent rule.",
+    "The asymptotic HAC test is DM-style, not a guarantee that every classical DM assumption holds.",
+    "Statistical significance does not establish practical importance or cross-dataset generalization."
+  ]
+}

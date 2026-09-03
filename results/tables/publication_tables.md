@@ -1,0 +1,186 @@
+# Publication Tables
+
+Generated from versioned local evidence by `python tools/run_phase22_tables.py`.
+
+Main-paper set: Tables 1, 5, 7, 9, 10, and 11. Supplementary set: Tables 2, 3, 4, 6, and 8.
+
+Table 11 is populated from the verified Phase 23 literature artifact when `outputs/phase23_related_work.json` is present.
+
+## Table 1. Characteristics of the normalized smart-meter development dataset.
+
+**Placement:** Main  
+**Status:** complete
+
+| Characteristic | Value | Interpretation |
+| --- | --- | --- |
+| Source | https://www.kaggle.com/datasets/ziya07/smart-meter-electricity-consumption-dataset | Third-party Kaggle listing |
+| Local file fingerprint | D48DF940FD29444FB9222FC0B59CFDE632E147CCD1D49DC7BED9D5F9DC88F588 | SHA-256 identifies the exact analyzed CSV |
+| Rows / variables | 5,000 / 7 | Seven columns including timestamp and supplied label |
+| Time span | 2024-01-01 00:00 to 2024-04-14 03:30 | Approximately 104 days |
+| Sampling interval | 30 min | 0 non-30-min gaps; 0 duplicate timestamps |
+| Missing cells | 0 | No blank cells in the local CSV |
+| Supplied labels | Normal 4,750; Abnormal 250 | Abnormal prevalence 5.00% |
+| Rows after maximum lag | 4,664 | 336 half-hour samples represent seven days |
+| Measurement units | Not recoverable | Numeric fields are normalized; physical kWh/weather units are not established |
+
+*Note:* The CSV is suitable for a reproducible normalized case study and hardware-in-the-loop portability experiment. It is not sufficient by itself for claims stated in physical energy units. Supplied anomaly labels are publisher-described algorithmic labels rather than independently verified electrical events.
+
+## Table 2. Forecasting models and prespecified configurations.
+
+**Placement:** Supplementary  
+**Status:** complete
+
+| Model | Configuration | Role |
+| --- | --- | --- |
+| Compact edge linear | Standardized least squares; 8 features; 2,984 fit + 747 calibration; FP32 deployment | Selected |
+| Linear regression | OLS with intercept; 3,731 training rows | Reference |
+| Random forest | 200 trees; depth 12; min leaf 2; seed 42 | Benchmark |
+| Histogram gradient boosting | lr=0.05; iter=200; leaves=31; min leaf=20; L2=0.1 | Benchmark |
+| Seasonal naive (lag 48) | Previous-day value at 30-min sampling (lag 48) | Benchmark |
+| Persistence (lag 1) | Previous observation (lag 1) | Benchmark |
+
+*Note:* All learned models use the same leakage-aware lag/calendar inputs in the main comparison. The compact model reserves part of the chronological training window for residual-threshold calibration and is exported as FP32 constants.
+
+## Table 3. Chronological holdout and walk-forward split configurations.
+
+**Placement:** Supplementary  
+**Status:** complete
+
+| Protocol | Fold | Train rows | Calibration rows | Test rows | Test interval |
+| --- | --- | --- | --- | --- | --- |
+| Single holdout | — | 3,731 | — | 933 | 2024-03-25 17:30 to 2024-04-14 03:30 |
+| Compact final fit/calibration | — | 2,984 | 747 | 933 | 2024-03-25 17:30 to 2024-04-14 03:30 |
+| Expanding walk-forward | 1 | 2,264 | 400 | 400 | 2024-03-03 12:00 to 2024-03-11 19:30 |
+| Expanding walk-forward | 2 | 2,664 | 400 | 400 | 2024-03-11 20:00 to 2024-03-20 03:30 |
+| Expanding walk-forward | 3 | 3,064 | 400 | 400 | 2024-03-20 04:00 to 2024-03-28 11:30 |
+| Expanding walk-forward | 4 | 3,464 | 400 | 400 | 2024-03-28 12:00 to 2024-04-05 19:30 |
+| Expanding walk-forward | 5 | 3,864 | 400 | 400 | 2024-04-05 20:00 to 2024-04-14 03:30 |
+
+*Note:* All splits preserve temporal order. Walk-forward test windows are non-overlapping and contain 400 rows each (2,000 total). Each lag uses only an observation available before its prediction timestamp.
+
+## Table 4. Single chronological holdout forecasting results.
+
+**Placement:** Supplementary  
+**Status:** complete
+
+| Model | MAE | RMSE | sMAPE (%) | Observed fit time (s) |
+| --- | --- | --- | --- | --- |
+| Compact edge linear | 0.130784 | 0.162390 | 39.802 | 0.0114 |
+| Linear regression | 0.130960 | 0.162529 | 39.862 | 0.0228 |
+| Random forest | 0.132761 | 0.165213 | 40.179 | 1.2757 |
+| Histogram gradient boosting | 0.136093 | 0.170102 | 40.953 | 0.8756 |
+| Seasonal naive (lag 48) | 0.183463 | 0.230878 | 56.380 | 0.0000 |
+| Persistence (lag 1) | 0.188160 | 0.232248 | 57.969 | 0.0000 |
+
+*Note:* MAE and RMSE are in normalized target units. Fit times are observed development-machine timings and are not embedded-device inference times. The compact model uses fewer fitting rows because 747 earlier rows are reserved for anomaly calibration.
+
+## Table 5. Five-fold expanding-window forecasting performance.
+
+**Placement:** Main  
+**Status:** complete
+
+| Model | MAE mean ± SD | MAE 95% CI | RMSE mean ± SD | Pooled sMAPE (%) |
+| --- | --- | --- | --- | --- |
+| Compact edge linear (FP32) | 0.133858 ± 0.004271 | [0.128555, 0.139161] | 0.165970 ± 0.004175 | 40.354 |
+| Linear regression | 0.133858 ± 0.004271 | [0.128555, 0.139161] | 0.165970 ± 0.004175 | 40.354 |
+| Random forest | 0.135236 ± 0.003713 | [0.130626, 0.139846] | 0.167993 ± 0.003135 | 40.593 |
+| Histogram gradient boosting | 0.140116 ± 0.004235 | [0.134857, 0.145375] | 0.174222 ± 0.003543 | 41.882 |
+| Seasonal naive (lag 48) | 0.188809 ± 0.008865 | [0.177802, 0.199816] | 0.235346 ± 0.008103 | 57.707 |
+| Persistence (lag 1) | 0.191500 ± 0.006112 | [0.183910, 0.199089] | 0.237066 ± 0.007700 | 58.497 |
+
+*Note:* Intervals are two-sided Student-t intervals over five fold-level metrics and should be interpreted descriptively. Metrics use normalized target units. Test windows are non-overlapping; training windows expand.
+
+## Table 6. Compact FP32 model feature-group ablation across five temporal folds.
+
+**Placement:** Supplementary  
+**Status:** complete
+
+| Feature group | Features (n) | MAE mean ± SD | MAE 95% CI | RMSE mean ± SD |
+| --- | --- | --- | --- | --- |
+| Lag + calendar + weather | 11 | 0.133823 ± 0.004198 | [0.128610, 0.139035] | 0.166092 ± 0.004093 |
+| Weather only | 3 | 0.133848 ± 0.004323 | [0.128479, 0.139216] | 0.166287 ± 0.004152 |
+| Calendar only | 4 | 0.133852 ± 0.004395 | [0.128395, 0.139309] | 0.165936 ± 0.004290 |
+| Lag + calendar | 8 | 0.133858 ± 0.004271 | [0.128555, 0.139161] | 0.165970 ± 0.004175 |
+| Lag + weather | 7 | 0.133865 ± 0.004203 | [0.128646, 0.139084] | 0.166327 ± 0.004034 |
+| Lag only | 4 | 0.133890 ± 0.004279 | [0.128577, 0.139203] | 0.166218 ± 0.004127 |
+
+*Note:* All metrics are in normalized target units. Differences between feature groups are small; the opaque Avg_Past_Consumption field is excluded because its construction and leakage properties are undocumented.
+
+## Table 7. Residual and isolation-forest anomaly-method agreement with supplied labels.
+
+**Placement:** Main  
+**Status:** complete
+
+| Method | TP | FP | FN | TN | Precision | Recall | F1 | Alerts (%) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Split conformal (95%) | 21 | 18 | 31 | 863 | 0.538 | 0.404 | 0.462 | 39 (4.18) |
+| Adaptive EWMA residual (p99) | 16 | 14 | 36 | 867 | 0.533 | 0.308 | 0.390 | 30 (3.22) |
+| Rolling-week residual (p99) | 10 | 1 | 42 | 880 | 0.909 | 0.192 | 0.317 | 11 (1.18) |
+| Static residual (p99) | 8 | 0 | 44 | 881 | 1.000 | 0.154 | 0.267 | 8 (0.86) |
+| Isolation forest (5%) | 19 | 114 | 33 | 767 | 0.143 | 0.365 | 0.205 | 133 (14.26) |
+
+*Note:* These values measure agreement with 52 abnormal and 881 normal publisher-supplied test labels. Those labels are described as Isolation-Forest-generated and are not validated physical anomaly ground truth; therefore the table does not establish real-world event-detection performance.
+
+## Table 8. Static residual-threshold sensitivity on the chronological test set.
+
+**Placement:** Supplementary  
+**Status:** complete
+
+| Calibration percentile | Threshold | TP | FP | FN | TN | Precision | Recall | F1 | Alert rate (%) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 90 | 0.284494 | 28 | 46 | 24 | 835 | 0.378 | 0.538 | 0.444 | 7.93 |
+| 92.5 | 0.310073 | 27 | 31 | 25 | 850 | 0.466 | 0.519 | 0.491 | 6.22 |
+| 95 | 0.343713 | 21 | 18 | 31 | 863 | 0.538 | 0.404 | 0.462 | 4.18 |
+| 97.5 | 0.365361 | 17 | 6 | 35 | 875 | 0.739 | 0.327 | 0.453 | 2.47 |
+| 99 | 0.383026 | 8 | 0 | 44 | 881 | 1.000 | 0.154 | 0.267 | 0.86 |
+| 99.5 | 0.410987 | 4 | 0 | 48 | 881 | 1.000 | 0.077 | 0.143 | 0.43 |
+
+*Note:* Thresholds are percentiles of absolute residuals on the 747-row chronological calibration set and use normalized units. Classification metrics use the same unverified publisher-supplied labels described in Table 7.
+
+## Table 9. Numerical and anomaly-decision parity across Python, host C++, and physical ESP8266 execution.
+
+**Placement:** Main  
+**Status:** complete
+
+| Layer | Target | Vectors | Prediction matches | Max. \|difference\| | Decision matches | Evidence |
+| --- | --- | --- | --- | --- | --- | --- |
+| Reference | Python float64 | 933 | Reference | Reference | Reference | MAE=0.130784; RMSE=0.162390 |
+| Host export | C++17 FP32, x86-64 | 933 | 933/933 | 7.557e-08 | 933/933 | Generated header vs Python reference |
+| Physical HIL | ESP8266EX NodeMCU 1.0 | 933 | 933/933 | 8.900e-08 | 933/933 | Replayed held-out vectors; mean kernel time 50.427 µs |
+
+*Note:* Differences are absolute differences in normalized prediction units. The physical test replays fixed held-out feature vectors stored in program flash; it validates numerical portability and decisions, not live sensor acquisition or field anomaly accuracy.
+
+## Table 10. ESP8266 resource utilization for normal and full-validation firmware.
+
+**Placement:** Main  
+**Status:** complete
+
+| Resource | Normal used | Normal headroom | Validation used | Validation headroom |
+| --- | --- | --- | --- | --- |
+| Data RAM | 29,516 / 80,192 (36.81%) | 50,676 (63.19%) | 29,852 / 80,192 (37.23%) | 50,340 (62.77%) |
+| Instruction RAM | 60,343 / 65,536 (92.08%) | 5,193 (7.92%) | 60,343 / 65,536 (92.08%) | 5,193 (7.92%) |
+| Flash code | 257,796 / 1,048,576 (24.59%) | 790,780 (75.41%) | 298,132 / 1,048,576 (28.43%) | 750,444 (71.57%) |
+| Core numeric model state | 104 B | Not a whole-firmware capacity measure | 104 B | 26 FP32 values; excludes code/metadata |
+
+*Note:* Whole-firmware values include the ESP8266 core, Wi-Fi, HTTP, serial reporting, model, and application. Validation vectors are experimental payload rather than model parameters. IRAM is the principal integration constraint, with 5,193 B headroom.
+
+## Table 11. Comparison with closely related forecasting, anomaly-detection, and edge-deployment studies.
+
+**Placement:** Main  
+**Status:** complete_verified_phase23
+
+| Study | Dataset | Temporal evaluation | Anomaly evidence | Hardware | Full-vector parity | Measured embedded cost | Key limitation |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| This work | Normalized 5,000-row case-study dataset | Single holdout + 5-fold expanding window | Agreement with supplied algorithmic labels | Physical ESP8266EX | 933/933 predictions and decisions | 50.427 µs batch-mean kernel; RAM/IRAM/flash reported | Physical units and real-event ground truth unavailable |
+| Shi et al. (2018) [shi2018pooling] | Irish smart-meter data from 920 customers. | Study-specific train/test forecasting; no rolling-origin result used in our comparison | None | TensorFlow development platform; no constrained-device deployment reported. | Not reported | No MCU cost reported | Accuracy study rather than embedded portability or anomaly detection. |
+| Kong et al. (2019) [kong2019lstm] | Public real residential smart-meter dataset. | Study-specific residential forecasting experiment; no rolling-origin result used here | None | No constrained-microcontroller execution reported. | Not reported | No MCU cost reported | Focuses forecasting accuracy rather than reproducible software-to-device transfer. |
+| Liu and Nielsen (2018) [liu2018scalable] | A real-world dataset and a large synthetic dataset. | Online/iterative streaming evaluation | Real and synthetic pattern-anomaly evaluation | Big-data system architecture; no microcontroller deployment. | Not applicable | Scalability; no MCU RAM/latency | System-level online scalability is not evidence of TinyML feasibility or numerical portability. |
+| Utomo and Hsiung (2020) [utomo2020multitiered] | One year of 30-min data from 200 US households; labels based on a statistical rule. | Sliding windows and daily look-ahead labels | Mean + 3 SD statistical labels, expanded over look-ahead windows | Raspberry Pi edge execution. | Not reported | Raspberry Pi latency and model file size | Raspberry Pi is substantially less constrained than ESP8266, and anomaly labels are constructed statistically. |
+| Hu and Tang (2020) [hu2020edge] | Numerical smart-meter system experiments. | Offline/online cloud-edge numerical evaluation | Not the primary evaluation | Edge-enabled architecture; a specific ESP-class MCU parity experiment is not reported. | Not reported | Execution-time results; no ESP8266 accounting | Architecture-level evidence does not isolate deterministic microcontroller inference portability. |
+| Gajendran et al. (2026) [gajendran2026ihems] | PZEM-004T measurements from two residential halls, sampled every 5 s and aggregated hourly. | Chronological 70/15/15; next-hour prediction | None | ESP8266 sensing/Wi-Fi gateways; forecasting evaluated on i7 CPU and RTX 3060 GPU. | Not reported | PC ML latency/memory; ESP8266 link latency 72–95 ms | The ESP8266 transports measurements but does not execute the forecasting models reported in the performance table. |
+| Banbury et al. (2021) [banbury2021mlperf] | Keyword spotting, visual wake words, image classification, and machine-anomaly benchmarks. | Task-specific benchmark splits; not load forecasting | Machine anomaly benchmark, not smart-meter events | Multiple ultra-low-power MCU-class systems. | Not its research question | Latency and energy benchmark framework | No smart-meter load forecasting task or Python-to-export parity question. |
+| Hernández et al. (2024) [hernandez2024daily] | Seven months of hourly appliance data from a commercial Wibeee meter in one four-tenant household. | Seven-month household series; next-hour prediction | Activity-alarm labels from an instrumented household | Commercial physical meter collected data; edge implementation is described as a future objective. | Not reported | Edge feasibility discussed; MCU cost not reported | Single household and application-specific activity alarms limit generalization. |
+| Li et al. (2024) [li2024federated] | Building Data Genome 2 and Irish CER customer-behaviour data. | First year train; subsequent half-year test; five runs with 95% CIs | None | Thirty ARM Cortex-M4 MCUs plus three edge PCs and one cloud server. | Not reported as a Python/C++ parity audit | MCU memory, training time, communication | One representative meter hardware configuration and no anomaly-detection study. |
+| Kolosov et al. (2025) [kolosov2025instrumental] | Measured 15-kHz voltage/current/power signatures and NILM evaluation data. | NILM train/test scenarios; not load forecasting | None; appliance disaggregation task | Custom analog front end plus six Raspberry Pi/accelerator/FPGA-class platforms. | Cross-platform accuracy, not row-wise export parity | Latency, power, throughput, efficiency across six boards | Targets NILM on substantially stronger hardware, not low-rate forecasting/anomaly decisions on ESP8266. |
+
+*Note:* External rows come from the targeted Phase 23 peer-reviewed gap analysis. Citation keys map to references/references.bib. The search is not a systematic review and does not support a 'first' claim. Metrics are not compared numerically across incompatible datasets/tasks.

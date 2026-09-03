@@ -1,0 +1,91 @@
+{
+  "phase": 13,
+  "model": "compact_standardized_linear_forecaster",
+  "feature_count": 8,
+  "parameter_accounting": {
+    "trainable_parameters": 9,
+    "preprocessing_float_values": 16,
+    "decision_threshold_float_values": 1,
+    "total_deployed_float_values": 26,
+    "core_numeric_state_bytes_float32": 104,
+    "definition": "Core numeric state includes 8 coefficients, one intercept, 8 means, 8 scales, and one residual threshold."
+  },
+  "operation_accounting_per_prediction": {
+    "subtractions": 8,
+    "divisions": 8,
+    "multiplications": 8,
+    "accumulation_additions": 8,
+    "core_scalar_arithmetic_operations": 32,
+    "residual_decision_additional_operations": {
+      "subtraction": 1,
+      "absolute_value": 1,
+      "comparison": 1
+    },
+    "convention": "Counts source-level scalar operations. It does not claim CPU cycles, instructions, or fused-operation behavior."
+  },
+  "validation_payload_estimates": {
+    "public_eight_vector_spot_check_numeric_bytes": 328,
+    "private_933_vector_payload_numeric_bytes": 39186,
+    "full_build_flash_code_increase_bytes": 40336,
+    "warning": "Validation vectors are experimental test payload, not model parameters."
+  },
+  "whole_firmware": {
+    "normal": {
+      "ram": {
+        "used_bytes": 29516,
+        "available_bytes": 80192,
+        "headroom_bytes": 50676,
+        "used_percent_exact": 36.80666400638468,
+        "headroom_percent_exact": 63.19333599361532
+      },
+      "iram": {
+        "used_bytes": 60343,
+        "available_bytes": 65536,
+        "headroom_bytes": 5193,
+        "used_percent_exact": 92.07611083984375,
+        "headroom_percent_exact": 7.92388916015625
+      },
+      "flash_code": {
+        "used_bytes": 257796,
+        "available_bytes": 1048576,
+        "headroom_bytes": 790780,
+        "used_percent_exact": 24.585342407226562,
+        "headroom_percent_exact": 75.41465759277344
+      }
+    },
+    "full_validation": {
+      "ram": {
+        "used_bytes": 29852,
+        "available_bytes": 80192,
+        "headroom_bytes": 50340,
+        "used_percent_exact": 37.225658419792495,
+        "headroom_percent_exact": 62.774341580207505
+      },
+      "iram": {
+        "used_bytes": 60343,
+        "available_bytes": 65536,
+        "headroom_bytes": 5193,
+        "used_percent_exact": 92.07611083984375,
+        "headroom_percent_exact": 7.92388916015625
+      },
+      "flash_code": {
+        "used_bytes": 298132,
+        "available_bytes": 1048576,
+        "headroom_bytes": 750444,
+        "used_percent_exact": 28.432083129882812,
+        "headroom_percent_exact": 71.56791687011719
+      }
+    },
+    "warning": "Whole-firmware values include ESP8266 core, Wi-Fi, HTTP, serial logging, self-test code, and application state; they are not the model footprint."
+  },
+  "engineering_risk": {
+    "primary_constraint": "instruction RAM",
+    "reason": "Both builds use 60,343 of 65,536 IRAM bytes, leaving only 5,193 bytes.",
+    "recommended_actions": [
+      "recompile after every networking, TLS, DSP, or library addition",
+      "remove validation vectors and self-test reporting from production builds",
+      "generate a linker map before claiming isolated code-size cost",
+      "avoid equating available flash with available IRAM"
+    ]
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "phase": 9,
+  "experiment": "prespecified_anomaly_method_comparison",
+  "comparison_target": "agreement with supplied Isolation-Forest-generated labels",
+  "not_established": "validated real-world electrical anomaly detection",
+  "units": "normalized dataset target units; physical kWh not established",
+  "dataset": {
+    "csv_sha256": "D48DF940FD29444FB9222FC0B59CFDE632E147CCD1D49DC7BED9D5F9DC88F588",
+    "fit_rows": 2984,
+    "calibration_rows": 747,
+    "test_rows": 933,
+    "supplied_test_abnormal": 52,
+    "supplied_test_normal": 881
+  },
+  "methods_sorted_by_f1": [
+    {
+      "method": "split_conformal_95",
+      "true_positive": 21,
+      "false_positive": 18,
+      "false_negative": 31,
+      "true_negative": 863,
+      "precision": 0.5384615384615384,
+      "recall": 0.40384615384615385,
+      "f1": 0.46153846153846156,
+      "alerts": 39,
+      "alert_rate_percent": 4.180064308681672,
+      "details": {
+        "alpha": 0.05,
+        "symmetric_absolute_residual_threshold": 0.3448462499982765,
+        "finite_sample_rank": 711,
+        "coverage_warning": "standard exchangeability assumptions are questionable for time series"
+      }
+    },
+    {
+      "method": "adaptive_ewma_residual_p99",
+      "true_positive": 16,
+      "false_positive": 14,
+      "false_negative": 36,
+      "true_negative": 867,
+      "precision": 0.5333333333333333,
+      "recall": 0.3076923076923077,
+      "f1": 0.3902439024390244,
+      "alerts": 30,
+      "alert_rate_percent": 3.215434083601286,
+      "details": {
+        "alpha": 0.02,
+        "initial_threshold": 0.3830260556441207,
+        "final_threshold": 0.4244101954307662,
+        "initial_standard_deviation_multiplier": 2.442780143656237,
+        "update_order": "decide using past state, then update with current residual"
+      }
+    },
+    {
+      "method": "rolling_week_residual_p99",
+      "true_positive": 10,
+      "false_positive": 1,
+      "false_negative": 42,
+      "true_negative": 880,
+      "precision": 0.9090909090909091,
+      "recall": 0.19230769230769232,
+      "f1": 0.31746031746031744,
+      "alerts": 11,
+      "alert_rate_percent": 1.1789924973204717,
+      "details": {
+        "window_rows": 336,
+        "window_interpretation": "seven days at half-hourly sampling",
+        "percentile": 99.0,
+        "initial_threshold": 0.3724739087595537,
+        "final_threshold": 0.42006511861652607,
+        "update_order": "decide using past window, then append current residual"
+      }
+    },
+    {
+      "method": "static_residual_p99",
+      "true_positive": 8,
+      "false_positive": 0,
+      "false_negative": 44,
+      "true_negative": 881,
+      "precision": 1.0,
+      "recall": 0.15384615384615385,
+      "f1": 0.2666666666666667,
+      "alerts": 8,
+      "alert_rate_percent": 0.857449088960343,
+      "details": {
+        "threshold": 0.3830260556441207,
+        "calibration_percentile": 99.0
+      }
+    },
+    {
+      "method": "isolation_forest_5pct",
+      "true_positive": 19,
+      "false_positive": 114,
+      "false_negative": 33,
+      "true_negative": 767,
+      "precision": 0.14285714285714285,
+      "recall": 0.36538461538461536,
+      "f1": 0.2054054054054054,
+      "alerts": 133,
+      "alert_rate_percent": 14.255091103965704,
+      "details": {
+        "features": [
+          "Electricity_Consumed",
+          "lag_1",
+          "lag_2",
+          "lag_48",
+          "lag_336",
+          "hour",
+          "day_of_week",
+          "month",
+          "is_weekend"
+        ],
+        "n_estimators": 200,
+        "contamination": 0.05,
+        "random_state": 42,
+        "configuration_warning": "5% contamination mirrors the dataset-wide supplied-label rate and may favor agreement"
+      }
+    }
+  ],
+  "limitations": [
+    "Supplied labels are algorithm-generated rather than independent physical ground truth.",
+    "Isolation Forest contamination uses the known 5% dataset label rate, creating circularity risk.",
+    "EWMA alpha, rolling-window length, and p99 level were prespecified but not externally validated.",
+    "Adaptive thresholds update using every residual, so sustained anomalies can raise the threshold.",
+    "Split-conformal marginal coverage is not guaranteed under temporal dependence and distribution shift.",
+    "Method rankings are descriptive on one future holdout and were not tested on an official anomaly dataset."
+  ]
+}

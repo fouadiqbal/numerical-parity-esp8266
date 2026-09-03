@@ -1,0 +1,132 @@
+{
+  "phase": 14,
+  "target_units": "normalized dataset units; physical kWh not established",
+  "test_rows": 933,
+  "reference": {
+    "mae_normalized": 0.1307837086033585,
+    "rmse_normalized": 0.1623896726478911,
+    "threshold_normalized": 0.3830260556441207,
+    "classification_against_supplied_labels": {
+      "true_positive": 8,
+      "false_positive": 0,
+      "false_negative": 44,
+      "true_negative": 881,
+      "precision": 1.0,
+      "recall": 0.15384615384615385,
+      "f1": 0.2666666666666667
+    }
+  },
+  "representations": {
+    "standardized_fp32": {
+      "mae_normalized": 0.13078370892915306,
+      "rmse_normalized": 0.16238967290543127,
+      "maximum_absolute_deviation_from_float64_reference": 7.55593464463189e-08,
+      "mean_absolute_deviation_from_float64_reference": 1.728906735520829e-08,
+      "decision_agreement_with_float64_reference": 933,
+      "decision_disagreements_with_float64_reference": 0,
+      "classification_against_supplied_labels": {
+        "true_positive": 8,
+        "false_positive": 0,
+        "false_negative": 44,
+        "true_negative": 881,
+        "precision": 1.0,
+        "recall": 0.15384615384615385,
+        "f1": 0.2666666666666667
+      },
+      "core_numeric_state_bytes": 104,
+      "source_level_kernel": "8 subtract + 8 divide + 8 multiply + 8 add"
+    },
+    "fused_affine_fp32": {
+      "mae_normalized": 0.1307837073000872,
+      "rmse_normalized": 0.16238967182637368,
+      "maximum_absolute_deviation_from_float64_reference": 8.068837442642973e-08,
+      "mean_absolute_deviation_from_float64_reference": 1.9362689354220327e-08,
+      "decision_agreement_with_float64_reference": 933,
+      "decision_disagreements_with_float64_reference": 0,
+      "classification_against_supplied_labels": {
+        "true_positive": 8,
+        "false_positive": 0,
+        "false_negative": 44,
+        "true_negative": 881,
+        "precision": 1.0,
+        "recall": 0.15384615384615385,
+        "f1": 0.2666666666666667
+      },
+      "core_numeric_state_bytes": 40,
+      "source_level_kernel": "8 multiply + 8 add"
+    },
+    "fixed_q7_q30": {
+      "mae_normalized": 0.1307726609758311,
+      "rmse_normalized": 0.16238097820108877,
+      "maximum_absolute_deviation_from_float64_reference": 0.0003536466132241789,
+      "mean_absolute_deviation_from_float64_reference": 0.00017202056195382288,
+      "decision_agreement_with_float64_reference": 933,
+      "decision_disagreements_with_float64_reference": 0,
+      "classification_against_supplied_labels": {
+        "true_positive": 8,
+        "false_positive": 0,
+        "false_negative": 44,
+        "true_negative": 881,
+        "precision": 1.0,
+        "recall": 0.15384615384615385,
+        "f1": 0.2666666666666667
+      },
+      "core_numeric_state_bytes": 40,
+      "generic_input_range_metadata_bytes": 32,
+      "source_level_kernel": "8 integer multiply + 8 integer add with int64 accumulator"
+    },
+    "fixed_q15_q30": {
+      "mae_normalized": 0.1307838373847888,
+      "rmse_normalized": 0.16238981225222385,
+      "maximum_absolute_deviation_from_float64_reference": 1.2109532246451504e-05,
+      "mean_absolute_deviation_from_float64_reference": 3.6216825826526386e-06,
+      "decision_agreement_with_float64_reference": 933,
+      "decision_disagreements_with_float64_reference": 0,
+      "classification_against_supplied_labels": {
+        "true_positive": 8,
+        "false_positive": 0,
+        "false_negative": 44,
+        "true_negative": 881,
+        "precision": 1.0,
+        "recall": 0.15384615384615385,
+        "f1": 0.2666666666666667
+      },
+      "core_numeric_state_bytes": 40,
+      "generic_input_range_metadata_bytes": 32,
+      "source_level_kernel": "8 integer multiply + 8 integer add with int64 accumulator"
+    }
+  },
+  "fixed_point_design": {
+    "equation": "prediction_q30 = bias_q30 + sum(input_q * multiplier_q30)",
+    "feature_maximum": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      23.0,
+      6.0,
+      12.0,
+      1.0
+    ],
+    "q15_integer_maximum": 32767,
+    "bias_q30": 435738756,
+    "multipliers_q30": [
+      -400,
+      -256,
+      -447,
+      -459,
+      42,
+      63,
+      -2346,
+      158
+    ],
+    "threshold_q30": 411271096,
+    "accumulator": "signed int64",
+    "input_clipping": "[0, per-feature maximum]"
+  },
+  "selection": {
+    "offline_candidate": "fixed_q15_q30",
+    "reason": "It removes floating-point divisions and preserves every test decision; physical latency and firmware-size measurements are required before adoption.",
+    "tflite_micro": "not used; unnecessary for a single affine equation"
+  }
+}

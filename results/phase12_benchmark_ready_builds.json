@@ -1,0 +1,31 @@
+{
+  "phase": 12,
+  "date": "2026-09-03",
+  "status": "benchmark firmware compiled; physical capture pending because COM11 was not detected",
+  "benchmark_batches": 30,
+  "inferences_per_batch": 2000,
+  "normal_build": {
+    "passed": true,
+    "ram_bytes": 29516,
+    "ram_available_bytes": 80192,
+    "ram_reported_percent": 36,
+    "iram_bytes": 60343,
+    "iram_available_bytes": 65536,
+    "iram_reported_percent": 92,
+    "flash_code_bytes": 257796,
+    "flash_code_available_bytes": 1048576,
+    "flash_code_reported_percent": 24
+  },
+  "full_validation_build": {
+    "passed": true,
+    "ram_bytes": 29852,
+    "ram_available_bytes": 80192,
+    "ram_reported_percent": 37,
+    "iram_bytes": 60343,
+    "iram_available_bytes": 65536,
+    "iram_reported_percent": 92,
+    "flash_code_bytes": 298132,
+    "flash_code_available_bytes": 1048576,
+    "flash_code_reported_percent": 28
+  }
+}

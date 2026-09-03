@@ -1,0 +1,74 @@
+{
+  "phase": 15,
+  "status": "future work; no experimental energy measurement has been performed",
+  "recommended_instrument": {
+    "primary_low_cost_research_option": "Nordic Power Profiler Kit II",
+    "measurement_range": "200 nA to 1 A",
+    "sampling_rate": "100 ksps",
+    "use_case": "batched inference energy with a GPIO timing marker",
+    "limitation": "An 8.8 to 50.6 microsecond single inference is too short for a reliable single-event waveform at 100 ksps; integrate long repeated batches."
+  },
+  "higher_performance_option": {
+    "instrument": "Joulescope JS220",
+    "sampling": "2 MS/s simultaneous current and voltage ADC; up to 1 MS/s output",
+    "bandwidth": "300 kHz",
+    "use_case": "higher-resolution transient and batch energy measurement"
+  },
+  "measurement_boundaries": [
+    {
+      "name": "board_3v3_boundary",
+      "includes": "ESP8266 module and 3.3 V board loads downstream of the selected rail",
+      "excludes": "USB input and any bypassed regulator losses",
+      "warning": "Confirm the exact NodeMCU power topology and prevent simultaneous back-powering from USB."
+    },
+    {
+      "name": "complete_dev_board_5v_boundary",
+      "includes": "on-board regulator and other powered board components",
+      "excludes": "host computer and external network infrastructure",
+      "warning": "Use an instrument and supply configuration rated for the board's transient current."
+    }
+  ],
+  "experiment": {
+    "representations": [
+      "standardized_fp32",
+      "fused_affine_fp32",
+      "fixed_q15_prequantized"
+    ],
+    "conditions": [
+      "Wi-Fi disabled for isolated model-kernel comparison",
+      "Wi-Fi connected but no transmission during marked batch for system-context comparison"
+    ],
+    "warmup_batches": 5,
+    "recorded_batches_per_representation_condition": 30,
+    "recommended_inferences_per_batch": 1000000,
+    "trigger": "Drive one GPIO high immediately before the inference loop and low immediately after it.",
+    "control": "Record matched idle/no-op windows and subtract baseline energy using the same supply and firmware condition.",
+    "order": "Randomize or interleave representations to reduce temperature and drift confounding."
+  },
+  "calculation": {
+    "batch_energy": "E_batch = sum(V[k] * I[k] * delta_t)",
+    "gross_energy_per_inference": "E_batch / N",
+    "incremental_energy_per_inference": "(E_batch - P_idle * T_batch) / N",
+    "average_power": "E_batch / T_batch",
+    "report_both_gross_and_incremental": true
+  },
+  "uncertainty": [
+    "instrument current and voltage accuracy",
+    "range-switching and burden-voltage effects",
+    "sampling and trigger alignment",
+    "supply-voltage variation",
+    "between-batch repeatability",
+    "board temperature and Wi-Fi state",
+    "baseline-subtraction sensitivity"
+  ],
+  "illustrative_not_measured": {
+    "assumption": "3.3 V and the ESP8266EX datasheet's 15 mA modem-sleep example current",
+    "warning": "These products are theoretical sensitivity calculations, not estimates of the measured Wi-Fi-enabled NodeMCU experiment and not paper results.",
+    "microjoules_from_timing_only_under_assumption": {
+      "standardized_fp32": 2.50602577995,
+      "fused_affine_fp32": 0.8084348151,
+      "fixed_q15_prequantized": 0.43788525,
+      "fixed_q15_with_float_conversion": 2.69017732335
+    }
+  }
+}

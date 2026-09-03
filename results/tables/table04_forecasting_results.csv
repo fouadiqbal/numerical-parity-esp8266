@@ -1,0 +1,7 @@
+﻿Model,MAE,RMSE,sMAPE (%),Observed fit time (s)
+Compact edge linear,0.130784,0.162390,39.802,0.0114
+Linear regression,0.130960,0.162529,39.862,0.0228
+Random forest,0.132761,0.165213,40.179,1.2757
+Histogram gradient boosting,0.136093,0.170102,40.953,0.8756
+Seasonal naive (lag 48),0.183463,0.230878,56.380,0.0000
+Persistence (lag 1),0.188160,0.232248,57.969,0.0000

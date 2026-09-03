@@ -1,0 +1,10 @@
+﻿Characteristic,Value,Interpretation
+Source,https://www.kaggle.com/datasets/ziya07/smart-meter-electricity-consumption-dataset,Third-party Kaggle listing
+Local file fingerprint,D48DF940FD29444FB9222FC0B59CFDE632E147CCD1D49DC7BED9D5F9DC88F588,SHA-256 identifies the exact analyzed CSV
+Rows / variables,"5,000 / 7",Seven columns including timestamp and supplied label
+Time span,2024-01-01 00:00 to 2024-04-14 03:30,Approximately 104 days
+Sampling interval,30 min,0 non-30-min gaps; 0 duplicate timestamps
+Missing cells,0,No blank cells in the local CSV
+Supplied labels,"Normal 4,750; Abnormal 250",Abnormal prevalence 5.00%
+Rows after maximum lag,"4,664",336 half-hour samples represent seven days
+Measurement units,Not recoverable,Numeric fields are normalized; physical kWh/weather units are not established

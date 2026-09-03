@@ -1,0 +1,12 @@
+{
+  "phase": 14,
+  "test": "generated_q15_q30_cpp_vs_python",
+  "rows": 933,
+  "prediction_tolerance_normalized": 1e-06,
+  "prediction_matches": 933,
+  "maximum_absolute_difference_normalized": 4.3674374816671246e-07,
+  "decision_matches": 933,
+  "compiler": "C:\\Program Files\\CodeBlocks\\MinGW\\bin\\g++.exe",
+  "compile_stderr": "",
+  "passed": true
+}

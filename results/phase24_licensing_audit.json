@@ -1,0 +1,155 @@
+{
+  "phase": 24,
+  "generated_utc": "2026-09-03T15:41:55.914344+00:00",
+  "status": "audit_complete_release_blocked",
+  "legal_notice": "Research compliance review, not legal advice.",
+  "authoritative_evidence": [
+    {
+      "item": "Kaggle dataset listing",
+      "url": "https://www.kaggle.com/datasets/ziya07/smart-meter-electricity-consumption-dataset",
+      "observed": "Version 1; CC0: Public Domain displayed",
+      "caveat": "Uploader authority and upstream measurement provenance are not documented."
+    },
+    {
+      "item": "CC0 1.0 legal code",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en",
+      "observed": "Waiver/public-license fallback applies only to rights the licensor is authorized to grant."
+    },
+    {
+      "item": "Repository code license",
+      "url": "https://opensource.org/license/mit",
+      "observed": "MIT text and copyright notice are present.",
+      "sha256": "E8506E10F874FEAF4355F6DE7B370CFE32283C82F43BECB0843AAA507580283E"
+    },
+    {
+      "item": "Similarity interpretation",
+      "url": "https://www.crossref.org/documentation/similarity-check/similarity-report-understand/",
+      "observed": "A similarity score flags textual overlap for human review; it does not itself decide plagiarism."
+    }
+  ],
+  "dataset": {
+    "listing_license": "CC0: Public Domain",
+    "version": "Version 1",
+    "local_csv_sha256": "D48DF940FD29444FB9222FC0B59CFDE632E147CCD1D49DC7BED9D5F9DC88F588",
+    "local_zip_sha256": "A99DD2C759DD0A28EC3E68DEC22F3BF686266346473D1CFABAFD2679D042271F",
+    "data_ignored": true,
+    "validation_header_ignored": true,
+    "assessment": "Conditionally usable for analysis and derived statistics, but unsuitable as the sole scientific dataset.",
+    "release_rule": "Do not include the raw CSV, archive, or 933-row validation header in the public release; provide acquisition and regeneration instructions instead."
+  },
+  "code": {
+    "license": "MIT",
+    "license_path": "LICENSE",
+    "license_sha256": "E8506E10F874FEAF4355F6DE7B370CFE32283C82F43BECB0843AAA507580283E",
+    "copyright_holder": "Md. Fouad Iqbal",
+    "third_party_dependencies_vendored": false,
+    "assessment": "MIT is suitable for author-owned source. Dependencies are named in requirements.txt and installed separately."
+  },
+  "figures": {
+    "manifest": "outputs/phase21_figure_manifest.json",
+    "generator": "tools/run_phase21_figures.py",
+    "artifacts_checked": 30,
+    "hashes_matched": 30,
+    "external_asset_call_count": 0,
+    "assessment": "Author-generated plots and diagrams from project results; no imported image asset call was found in the generator. Dataset attribution remains required."
+  },
+  "screenshots_and_third_party_images": {
+    "repository_screenshots_found": 0,
+    "copied_diagrams_found": 0,
+    "unexplained_manuscript_media": 0,
+    "assessment": "No submission figure requires third-party image permission on current evidence."
+  },
+  "references": {
+    "path": "references/references.bib",
+    "sha256": "C01D9FDADA295660A53368CB44B2D3345EB46B8D94BB6C96D09B264BF87C24BE",
+    "entry_count": 12,
+    "unique_key_count": 12,
+    "doi_count": 10,
+    "assessment": "Bibliographic facts may be reused; abstracts, figures, and substantial paper text were not copied."
+  },
+  "manuscript": {
+    "path": "../outputs/smart_meter_energy_manuscript_esp8266_updated.docx",
+    "sha256": "C072E96EB6B2D3BDD3986BFCF475124C3B37D7C0B8D791BF6A000923867C3918",
+    "paragraph_count": 141,
+    "word_count_approximate": 2255,
+    "embedded_media_count": 5,
+    "embedded_media_with_local_source_match": 5,
+    "embedded_media": [
+      {
+        "name": "word/media/image1.png",
+        "bytes": 44452,
+        "sha256": "4C71490960661358B2248E49FFB506E9F93C219EEECFED6142967867CD635AE8",
+        "local_source_matches": [
+          "../outputs/paper_figures/figure_1_workflow.png"
+        ]
+      },
+      {
+        "name": "word/media/image2.png",
+        "bytes": 37605,
+        "sha256": "0CA929635916EC441A674AA7C003B9C77F7FD2E417352027774102BAE88B9818",
+        "local_source_matches": [
+          "../outputs/paper_figures/figure_2_forecast_errors.png"
+        ]
+      },
+      {
+        "name": "word/media/image3.png",
+        "bytes": 38005,
+        "sha256": "24819BC78BC8BB1F2E79E8C9E9CAC16720A8D573A27AD5CFF8D85C666E62E88F",
+        "local_source_matches": [
+          "../outputs/paper_figures/figure_3_anomaly_metrics.png"
+        ]
+      },
+      {
+        "name": "word/media/image4.png",
+        "bytes": 62089,
+        "sha256": "99E876CDA20F9DA2033A2E0FE9001EC92927223A3E16A00709376EA214990DFD",
+        "local_source_matches": [
+          "../outputs/paper_figures/figure_4_edge_forecast_residuals.png"
+        ]
+      },
+      {
+        "name": "word/media/image5.png",
+        "bytes": 86625,
+        "sha256": "FA65BFB81BE84F409ABCBCF694E76AEF27963174AE49FF56D3BAC60630E88605",
+        "local_source_matches": [
+          "../outputs/paper_figures/figure_5_esp8266_validation.png"
+        ]
+      }
+    ],
+    "numbered_reference_count": 5,
+    "physical_kwh_string_count": 15,
+    "submission_blockers": [
+      "The draft repeatedly labels normalized values as kWh even though inverse scaling is unavailable.",
+      "The draft contains only five references and predates the verified Phase 23 related-work matrix.",
+      "The timing description uses three 16,000-inference runs rather than the later Phase 12 thirty-batch result.",
+      "A corpus-backed similarity report has not yet been reviewed by the author."
+    ]
+  },
+  "secret_scan": {
+    "files_scanned": 148,
+    "match_counts_without_values": {
+      "github_token": 0,
+      "google_api_key": 0,
+      "assigned_api_key": 0
+    },
+    "passed": true,
+    "note": "Private data paths and credential files were excluded; this is a pattern scan, not a guarantee."
+  },
+  "definitions": {
+    "copyright_infringement": "Unauthorized exercise of a copyright owner's exclusive rights; citation alone does not create permission.",
+    "plagiarism": "Presenting another person's words, ideas, structure, images, or methods as one's own without adequate acknowledgment; primarily an academic-ethics issue.",
+    "proper_citation": "Accurate acknowledgment that lets readers identify the source; it does not replace a required copyright license or permission."
+  },
+  "release_gate": {
+    "repository_source_release": "conditional_pass",
+    "manuscript_submission": "blocked",
+    "must_complete": [
+      "Update every unverified kWh label to normalized target units.",
+      "Rewrite the manuscript from Phase 20-23 evidence and insert the verified related-work bibliography.",
+      "Keep raw Kaggle data and the full 933-row validation vectors outside the release; retain only the eight regression vectors embedded in the generated model header.",
+      "Retain source generators and hashes for every submitted figure and table.",
+      "Run iThenticate or Turnitin on the final manuscript and review each match manually.",
+      "Recheck the target venue's author, AI-use, preprint, and figure-permission policies."
+    ]
+  }
+}

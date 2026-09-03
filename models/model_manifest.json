@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "model_name": "compact_standardized_linear_forecaster",
+  "model_fingerprint_sha256": "7E7F91C2B5597F57F7801830D9719B2FDB9A5987283FB0EFCFE2481F4B323003",
+  "dataset": {
+    "source": "https://www.kaggle.com/datasets/ziya07/smart-meter-electricity-consumption-dataset",
+    "csv_sha256": "D48DF940FD29444FB9222FC0B59CFDE632E147CCD1D49DC7BED9D5F9DC88F588",
+    "raw_rows": 5000,
+    "rows_after_lags": 4664
+  },
+  "target": "Electricity_Consumed",
+  "target_units": "normalized dataset units; physical kWh not established",
+  "features_in_order": [
+    "lag_1",
+    "lag_2",
+    "lag_48",
+    "lag_336",
+    "hour",
+    "day_of_week",
+    "month",
+    "is_weekend"
+  ],
+  "split": {
+    "fit_rows": 2984,
+    "calibration_rows": 747,
+    "test_rows": 933,
+    "fit_start": "2024-01-08T00:00:00",
+    "fit_end": "2024-03-10T03:30:00",
+    "calibration_start": "2024-03-10T04:00:00",
+    "calibration_end": "2024-03-25T17:00:00",
+    "test_start": "2024-03-25T17:30:00",
+    "test_end": "2024-04-14T03:30:00"
+  },
+  "training_float64": {
+    "intercept": 0.3800952523158259,
+    "feature_mean": [
+      0.3799574563985156,
+      0.3799492605694934,
+      0.38029208679157145,
+      0.38104125923790516,
+      11.473190348525469,
+      2.959785522788204,
+      1.7613941018766757,
+      0.2761394101876676
+    ],
+    "feature_scale": [
+      0.16385146606903528,
+      0.16384297273639575,
+      0.16310495238619638,
+      0.16270852723731302,
+      6.932455028135317,
+      1.9827654090023497,
+      0.6903472240285502,
+      0.4470866094269372
+    ],
+    "coefficients": [
+      -0.002001830141514988,
+      -0.0012800772618252467,
+      -0.0022238147736788347,
+      -0.002277808821476826,
+      0.00038583289157865597,
+      0.00063998438010532,
+      -0.004119200712247638,
+      0.0021499011255556705
+    ],
+    "residual_threshold": 0.3830260556441207
+  },
+  "serialized_cpp_float32": {
+    "intercept": 0.3800952434539795,
+    "feature_mean": [
+      0.3799574673175812,
+      0.37994927167892456,
+      0.3802920877933502,
+      0.3810412585735321,
+      11.473190307617188,
+      2.9597854614257812,
+      1.7613941431045532,
+      0.27613940834999084
+    ],
+    "feature_scale": [
+      0.16385146975517273,
+      0.16384297609329224,
+      0.16310495138168335,
+      0.16270852088928223,
+      6.932455062866211,
+      1.9827654361724854,
+      0.6903471946716309,
+      0.4470866024494171
+    ],
+    "coefficients": [
+      -0.002001830143854022,
+      -0.0012800772674381733,
+      -0.0022238148376345634,
+      -0.002277808729559183,
+      0.00038583288551308215,
+      0.0006399843841791153,
+      -0.004119200631976128,
+      0.002149901119992137
+    ],
+    "residual_threshold": 0.3830260634422302
+  },
+  "inference_formula": "intercept + sum(((x[i] - mean[i]) / scale[i]) * coefficient[i])",
+  "threshold_formula": "abs(actual_normalized - predicted_normalized) > residual_threshold_normalized",
+  "environment": {
+    "python": "3.13.2",
+    "numpy": "2.5.2",
+    "pandas": "3.0.5"
+  }
+}

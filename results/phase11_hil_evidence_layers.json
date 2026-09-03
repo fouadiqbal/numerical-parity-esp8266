@@ -1,0 +1,85 @@
+{
+  "phase": 11,
+  "title": "HIL evidence separation audit",
+  "target_units": "normalized dataset units; physical kWh not established",
+  "evidence_layers": [
+    {
+      "layer": 1,
+      "name": "offline_python_evaluation",
+      "execution_target": "desktop Python",
+      "vectors": 933,
+      "source": "outputs/tinyml_edge_metrics_v2.json",
+      "proves": [
+        "chronological reference predictions and residual decisions",
+        "reference forecasting and supplied-label classification metrics"
+      ],
+      "does_not_prove": [
+        "C++ numerical portability",
+        "physical ESP8266 execution",
+        "calibrated energy sensing"
+      ]
+    },
+    {
+      "layer": 2,
+      "name": "compiled_host_cpp_parity",
+      "execution_target": "independently compiled C++17 executable",
+      "vectors": 933,
+      "prediction_matches": 933,
+      "anomaly_decision_matches": 933,
+      "maximum_absolute_difference_normalized": 7.557157177817686e-08,
+      "source": "outputs/tinyml_cpp_parity.json",
+      "proves": [
+        "generated-header arithmetic and feature-order parity",
+        "float64-to-float32 transfer within the declared tolerance"
+      ],
+      "does_not_prove": [
+        "ESP8266 timing or resource behavior",
+        "live sensor or network operation"
+      ]
+    },
+    {
+      "layer": 3,
+      "name": "physical_esp8266_hil_replay",
+      "execution_target": "ESP8266EX NodeMCU 1.0",
+      "benchmark_date": "2026-09-03",
+      "vectors": 933,
+      "prediction_matches": 933,
+      "anomaly_decision_matches": 933,
+      "maximum_absolute_difference_normalized": 8.9e-08,
+      "mean_pure_inference_us": 50.427,
+      "full_validation_elapsed_us": 60122,
+      "source": "outputs/tinyml_device_benchmark_v2.json",
+      "proves": [
+        "fixed held-out vectors execute on a physical ESP8266EX",
+        "device decisions reproduce the exported Python decisions",
+        "pure-inference timing for this firmware/compiler/board setup"
+      ],
+      "does_not_prove": [
+        "live forecasting from an on-device lag buffer",
+        "calibrated voltage, current, power, or energy measurement",
+        "fault-detection performance on physically verified events",
+        "energy per inference"
+      ]
+    }
+  ],
+  "cross_layer_checks": {
+    "python_vs_device_mae_absolute_difference": 1.6033585015229335e-09,
+    "python_vs_device_rmse_absolute_difference": 3.664789108293043e-08,
+    "python_vs_device_confusion_matrix_equal": true,
+    "normal_firmware_compiles": true,
+    "full_validation_firmware_compiles": true
+  },
+  "device_record": {
+    "sha256": "42F99D1E29F49353A5C10EA60B3C18D78C3D29B1252CBBDEE257B58B0A9633F1",
+    "schema_version": 2,
+    "unit_keys_corrected": true,
+    "raw_capture_sha256": "E13D469866C635EC58C1BFD515DC4595EF8D4559AFB900D040449F133D4A80A8"
+  },
+  "resource_interpretation": {
+    "physical_device_validation_build_ram_bytes": 29852,
+    "current_recompiled_validation_build_ram_bytes": 29852,
+    "difference_bytes": 0,
+    "explanation": "The physical v2 record and the current compile record use the same benchmark-ready full-validation build."
+  },
+  "claim_boundary": "The verified result is numerical portability of a compact model under held-out-vector replay on ESP8266, not a deployed smart meter."
+}

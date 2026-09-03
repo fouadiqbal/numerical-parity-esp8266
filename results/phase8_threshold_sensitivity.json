@@ -1,0 +1,126 @@
+{
+  "phase": 8,
+  "experiment": "compact_model_residual_threshold_sensitivity",
+  "units": "normalized dataset target units; physical kWh not established",
+  "dataset": {
+    "csv_sha256": "D48DF940FD29444FB9222FC0B59CFDE632E147CCD1D49DC7BED9D5F9DC88F588",
+    "rows_after_lags": 4664
+  },
+  "split": {
+    "fit_rows": 2984,
+    "calibration_rows": 747,
+    "test_rows": 933,
+    "fit_end": "2024-03-10T03:30:00",
+    "calibration_start": "2024-03-10T04:00:00",
+    "calibration_end": "2024-03-25T17:00:00",
+    "test_start": "2024-03-25T17:30:00",
+    "test_end": "2024-04-14T03:30:00"
+  },
+  "model": "standardized linear least squares software reference",
+  "calibration_quantile_method": "numpy linear interpolation default",
+  "supplied_test_labels": {
+    "abnormal": 52,
+    "normal": 881,
+    "ground_truth_warning": "labels are publisher-described Isolation Forest outputs, not independently validated physical events"
+  },
+  "results": [
+    {
+      "calibration_percentile": 90.0,
+      "threshold_normalized": 0.28449369117611134,
+      "true_positive": 28,
+      "false_positive": 46,
+      "false_negative": 24,
+      "true_negative": 835,
+      "precision": 0.3783783783783784,
+      "recall": 0.5384615384615384,
+      "f1": 0.4444444444444445,
+      "alerts": 74,
+      "alert_rate_percent": 7.931404072883172
+    },
+    {
+      "calibration_percentile": 92.5,
+      "threshold_normalized": 0.3100733670449179,
+      "true_positive": 27,
+      "false_positive": 31,
+      "false_negative": 25,
+      "true_negative": 850,
+      "precision": 0.46551724137931033,
+      "recall": 0.5192307692307693,
+      "f1": 0.49090909090909085,
+      "alerts": 58,
+      "alert_rate_percent": 6.216505894962487
+    },
+    {
+      "calibration_percentile": 95.0,
+      "threshold_normalized": 0.34371256064480926,
+      "true_positive": 21,
+      "false_positive": 18,
+      "false_negative": 31,
+      "true_negative": 863,
+      "precision": 0.5384615384615384,
+      "recall": 0.40384615384615385,
+      "f1": 0.46153846153846156,
+      "alerts": 39,
+      "alert_rate_percent": 4.180064308681672
+    },
+    {
+      "calibration_percentile": 97.5,
+      "threshold_normalized": 0.365361358869699,
+      "true_positive": 17,
+      "false_positive": 6,
+      "false_negative": 35,
+      "true_negative": 875,
+      "precision": 0.7391304347826086,
+      "recall": 0.3269230769230769,
+      "f1": 0.4533333333333333,
+      "alerts": 23,
+      "alert_rate_percent": 2.465166130760986
+    },
+    {
+      "calibration_percentile": 99.0,
+      "threshold_normalized": 0.3830260556441207,
+      "true_positive": 8,
+      "false_positive": 0,
+      "false_negative": 44,
+      "true_negative": 881,
+      "precision": 1.0,
+      "recall": 0.15384615384615385,
+      "f1": 0.2666666666666667,
+      "alerts": 8,
+      "alert_rate_percent": 0.857449088960343
+    },
+    {
+      "calibration_percentile": 99.5,
+      "threshold_normalized": 0.4109873391260602,
+      "true_positive": 4,
+      "false_positive": 0,
+      "false_negative": 48,
+      "true_negative": 881,
+      "precision": 1.0,
+      "recall": 0.07692307692307693,
+      "f1": 0.14285714285714288,
+      "alerts": 4,
+      "alert_rate_percent": 0.4287245444801715
+    }
+  ],
+  "retrospective_highest_test_f1": {
+    "calibration_percentile": 92.5,
+    "threshold_normalized": 0.3100733670449179,
+    "true_positive": 27,
+    "false_positive": 31,
+    "false_negative": 25,
+    "true_negative": 850,
+    "precision": 0.46551724137931033,
+    "recall": 0.5192307692307693,
+    "f1": 0.49090909090909085,
+    "alerts": 58,
+    "alert_rate_percent": 6.216505894962487,
+    "selection_warning": "descriptive only; selecting this threshold from test labels would bias a final evaluation"
+  },
+  "limitations": [
+    "Thresholds use past calibration residuals, but threshold ranking is inspected against future supplied labels.",
+    "Supplied labels are algorithm-generated and have unverified physical meaning.",
+    "The test contains only 52 supplied positives.",
+    "A deployable threshold must be selected without optimizing on the final test labels."
+  ]
+}

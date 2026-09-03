@@ -1,0 +1,8 @@
+﻿Protocol,Fold,Train rows,Calibration rows,Test rows,Test interval
+Single holdout,—,"3,731",—,933,2024-03-25 17:30 to 2024-04-14 03:30
+Compact final fit/calibration,—,"2,984",747,933,2024-03-25 17:30 to 2024-04-14 03:30
+Expanding walk-forward,1,"2,264",400,400,2024-03-03 12:00 to 2024-03-11 19:30
+Expanding walk-forward,2,"2,664",400,400,2024-03-11 20:00 to 2024-03-20 03:30
+Expanding walk-forward,3,"3,064",400,400,2024-03-20 04:00 to 2024-03-28 11:30
+Expanding walk-forward,4,"3,464",400,400,2024-03-28 12:00 to 2024-04-05 19:30
+Expanding walk-forward,5,"3,864",400,400,2024-04-05 20:00 to 2024-04-14 03:30

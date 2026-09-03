@@ -1,0 +1,402 @@
+{
+  "phase": 7,
+  "experiment": "compact_float32_feature_group_ablation",
+  "units": "normalized dataset target units; physical units not established",
+  "dataset": {
+    "csv_sha256": "D48DF940FD29444FB9222FC0B59CFDE632E147CCD1D49DC7BED9D5F9DC88F588",
+    "rows_after_lag_336": 4664
+  },
+  "fold_design": {
+    "folds": 5,
+    "initial_training_rows": 2264,
+    "calibration_rows_per_fold": 400,
+    "test_rows_per_fold": 400,
+    "forecast_mode": "rolling one-step-ahead"
+  },
+  "model": "standardized linear least squares with float32 inference emulation",
+  "feature_groups": {
+    "calendar_only": [
+      "hour",
+      "day_of_week",
+      "month",
+      "is_weekend"
+    ],
+    "lag_only": [
+      "lag_1",
+      "lag_2",
+      "lag_48",
+      "lag_336"
+    ],
+    "weather_only": [
+      "Temperature",
+      "Humidity",
+      "Wind_Speed"
+    ],
+    "lag_plus_calendar": [
+      "lag_1",
+      "lag_2",
+      "lag_48",
+      "lag_336",
+      "hour",
+      "day_of_week",
+      "month",
+      "is_weekend"
+    ],
+    "lag_plus_weather": [
+      "lag_1",
+      "lag_2",
+      "lag_48",
+      "lag_336",
+      "Temperature",
+      "Humidity",
+      "Wind_Speed"
+    ],
+    "lag_plus_calendar_plus_weather": [
+      "lag_1",
+      "lag_2",
+      "lag_48",
+      "lag_336",
+      "hour",
+      "day_of_week",
+      "month",
+      "is_weekend",
+      "Temperature",
+      "Humidity",
+      "Wind_Speed"
+    ]
+  },
+  "excluded_opaque_feature": {
+    "name": "Avg_Past_Consumption",
+    "reason": "source page does not define its rolling window or prove it is causal"
+  },
+  "fold_results": [
+    {
+      "fold": 1,
+      "train_rows": 2264,
+      "calibration_rows": 400,
+      "test_rows": 400,
+      "test_start": "2024-03-03T12:00:00",
+      "test_end": "2024-03-11T19:30:00",
+      "group_metrics": {
+        "calendar_only": {
+          "mae_normalized": 0.14149232508714568,
+          "rmse_normalized": 0.17147977745166906
+        },
+        "lag_only": {
+          "mae_normalized": 0.14138075528157798,
+          "rmse_normalized": 0.17175153971090776
+        },
+        "weather_only": {
+          "mae_normalized": 0.1413931623168796,
+          "rmse_normalized": 0.1718378357838259
+        },
+        "lag_plus_calendar": {
+          "mae_normalized": 0.14130070681788662,
+          "rmse_normalized": 0.17136832618916037
+        },
+        "lag_plus_weather": {
+          "mae_normalized": 0.14122305746659713,
+          "rmse_normalized": 0.17172453166519308
+        },
+        "lag_plus_calendar_plus_weather": {
+          "mae_normalized": 0.14113605788185246,
+          "rmse_normalized": 0.17137263738022088
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "train_rows": 2664,
+      "calibration_rows": 400,
+      "test_rows": 400,
+      "test_start": "2024-03-11T20:00:00",
+      "test_end": "2024-03-20T03:30:00",
+      "group_metrics": {
+        "calendar_only": {
+          "mae_normalized": 0.1333742615619503,
+          "rmse_normalized": 0.16858953743911873
+        },
+        "lag_only": {
+          "mae_normalized": 0.13342595507069288,
+          "rmse_normalized": 0.16863675226896258
+        },
+        "weather_only": {
+          "mae_normalized": 0.13338785028485994,
+          "rmse_normalized": 0.1686976073754345
+        },
+        "lag_plus_calendar": {
+          "mae_normalized": 0.1332695002857841,
+          "rmse_normalized": 0.16854691752548315
+        },
+        "lag_plus_weather": {
+          "mae_normalized": 0.1333010215016489,
+          "rmse_normalized": 0.16867859413331437
+        },
+        "lag_plus_calendar_plus_weather": {
+          "mae_normalized": 0.1331379940861751,
+          "rmse_normalized": 0.16859900837700503
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "train_rows": 3064,
+      "calibration_rows": 400,
+      "test_rows": 400,
+      "test_start": "2024-03-20T04:00:00",
+      "test_end": "2024-03-28T11:30:00",
+      "group_metrics": {
+        "calendar_only": {
+          "mae_normalized": 0.13044525524521833,
+          "rmse_normalized": 0.16385025580300397
+        },
+        "lag_only": {
+          "mae_normalized": 0.13103005113323543,
+          "rmse_normalized": 0.1643514995442318
+        },
+        "weather_only": {
+          "mae_normalized": 0.1307515958985978,
+          "rmse_normalized": 0.16437961185807032
+        },
+        "lag_plus_calendar": {
+          "mae_normalized": 0.13056006065785958,
+          "rmse_normalized": 0.1637988169827621
+        },
+        "lag_plus_weather": {
+          "mae_normalized": 0.13089065970327357,
+          "rmse_normalized": 0.1643686482500808
+        },
+        "lag_plus_calendar_plus_weather": {
+          "mae_normalized": 0.13049495389041327,
+          "rmse_normalized": 0.1638326662431159
+        }
+      }
+    },
+    {
+      "fold": 4,
+      "train_rows": 3464,
+      "calibration_rows": 400,
+      "test_rows": 400,
+      "test_start": "2024-03-28T12:00:00",
+      "test_end": "2024-04-05T19:30:00",
+      "group_metrics": {
+        "calendar_only": {
+          "mae_normalized": 0.13205278794326106,
+          "rmse_normalized": 0.16034952708650754
+        },
+        "lag_only": {
+          "mae_normalized": 0.13196205718801263,
+          "rmse_normalized": 0.16097667931227916
+        },
+        "weather_only": {
+          "mae_normalized": 0.13204972991839836,
+          "rmse_normalized": 0.1609836037867515
+        },
+        "lag_plus_calendar": {
+          "mae_normalized": 0.132189666922708,
+          "rmse_normalized": 0.16058100269435704
+        },
+        "lag_plus_weather": {
+          "mae_normalized": 0.13214514167967514,
+          "rmse_normalized": 0.16121542882616666
+        },
+        "lag_plus_calendar_plus_weather": {
+          "mae_normalized": 0.13228309618649958,
+          "rmse_normalized": 0.16083159518159082
+        }
+      }
+    },
+    {
+      "fold": 5,
+      "train_rows": 3864,
+      "calibration_rows": 400,
+      "test_rows": 400,
+      "test_start": "2024-04-05T20:00:00",
+      "test_end": "2024-04-14T03:30:00",
+      "group_metrics": {
+        "calendar_only": {
+          "mae_normalized": 0.13189547637569407,
+          "rmse_normalized": 0.1654126374321813
+        },
+        "lag_only": {
+          "mae_normalized": 0.13165182793470984,
+          "rmse_normalized": 0.16537144892340322
+        },
+        "weather_only": {
+          "mae_normalized": 0.13165565434755508,
+          "rmse_normalized": 0.16553475890488864
+        },
+        "lag_plus_calendar": {
+          "mae_normalized": 0.13196929964994053,
+          "rmse_normalized": 0.16555558987456898
+        },
+        "lag_plus_weather": {
+          "mae_normalized": 0.13176600942704322,
+          "rmse_normalized": 0.16564938158779913
+        },
+        "lag_plus_calendar_plus_weather": {
+          "mae_normalized": 0.13206073003577296,
+          "rmse_normalized": 0.165821709344946
+        }
+      }
+    }
+  ],
+  "summary_sorted_by_mean_fold_mae": [
+    {
+      "group": "lag_plus_calendar_plus_weather",
+      "feature_count": 11,
+      "features": [
+        "lag_1",
+        "lag_2",
+        "lag_48",
+        "lag_336",
+        "hour",
+        "day_of_week",
+        "month",
+        "is_weekend",
+        "Temperature",
+        "Humidity",
+        "Wind_Speed"
+      ],
+      "fold_mae": {
+        "mean": 0.13382256641614268,
+        "sample_standard_deviation": 0.004198298400379313,
+        "ci95_lower": 0.12860969043867523,
+        "ci95_upper": 0.13903544239361013
+      },
+      "fold_rmse": {
+        "mean": 0.16609152330537574,
+        "sample_standard_deviation": 0.0040932788179013245,
+        "ci95_lower": 0.1610090463625776,
+        "ci95_upper": 0.1711740002481739
+      }
+    },
+    {
+      "group": "weather_only",
+      "feature_count": 3,
+      "features": [
+        "Temperature",
+        "Humidity",
+        "Wind_Speed"
+      ],
+      "fold_mae": {
+        "mean": 0.13384759855325817,
+        "sample_standard_deviation": 0.004323455922290753,
+        "ci95_lower": 0.1284793189867289,
+        "ci95_upper": 0.13921587811978745
+      },
+      "fold_rmse": {
+        "mean": 0.16628668354179416,
+        "sample_standard_deviation": 0.004151891523770188,
+        "ci95_lower": 0.16113142931228133,
+        "ci95_upper": 0.17144193777130698
+      }
+    },
+    {
+      "group": "calendar_only",
+      "feature_count": 4,
+      "features": [
+        "hour",
+        "day_of_week",
+        "month",
+        "is_weekend"
+      ],
+      "fold_mae": {
+        "mean": 0.13385202124265388,
+        "sample_standard_deviation": 0.0043952775791756315,
+        "ci95_lower": 0.1283945633104793,
+        "ci95_upper": 0.13930947917482847
+      },
+      "fold_rmse": {
+        "mean": 0.1659363470424961,
+        "sample_standard_deviation": 0.004289744911359181,
+        "ci95_lower": 0.16060992522458362,
+        "ci95_upper": 0.1712627688604086
+      }
+    },
+    {
+      "group": "lag_plus_calendar",
+      "feature_count": 8,
+      "features": [
+        "lag_1",
+        "lag_2",
+        "lag_48",
+        "lag_336",
+        "hour",
+        "day_of_week",
+        "month",
+        "is_weekend"
+      ],
+      "fold_mae": {
+        "mean": 0.13385784686683577,
+        "sample_standard_deviation": 0.004271040410337341,
+        "ci95_lower": 0.12855464975444647,
+        "ci95_upper": 0.13916104397922507
+      },
+      "fold_rmse": {
+        "mean": 0.16597013065326632,
+        "sample_standard_deviation": 0.004174610547673715,
+        "ci95_lower": 0.16078666702969818,
+        "ci95_upper": 0.17115359427683446
+      }
+    },
+    {
+      "group": "lag_plus_weather",
+      "feature_count": 7,
+      "features": [
+        "lag_1",
+        "lag_2",
+        "lag_48",
+        "lag_336",
+        "Temperature",
+        "Humidity",
+        "Wind_Speed"
+      ],
+      "fold_mae": {
+        "mean": 0.1338651779556476,
+        "sample_standard_deviation": 0.004203256342946795,
+        "ci95_lower": 0.12864614587938894,
+        "ci95_upper": 0.13908421003190624
+      },
+      "fold_rmse": {
+        "mean": 0.1663273168925108,
+        "sample_standard_deviation": 0.0040337888732748985,
+        "ci95_lower": 0.16131870647221042,
+        "ci95_upper": 0.17133592731281116
+      }
+    },
+    {
+      "group": "lag_only",
+      "feature_count": 4,
+      "features": [
+        "lag_1",
+        "lag_2",
+        "lag_48",
+        "lag_336"
+      ],
+      "fold_mae": {
+        "mean": 0.13389012932164576,
+        "sample_standard_deviation": 0.004278797655356308,
+        "ci95_lower": 0.12857730031739115,
+        "ci95_upper": 0.13920295832590038
+      },
+      "fold_rmse": {
+        "mean": 0.1662175839519569,
+        "sample_standard_deviation": 0.004127418643460018,
+        "ci95_lower": 0.16109271681685758,
+        "ci95_upper": 0.17134245108705623
+      }
+    }
+  ],
+  "marginal_mean_mae_changes_negative_is_improvement": {
+    "weather_added_to_lag_plus_calendar_mae_change": -3.52804506930926e-05,
+    "calendar_added_to_lag_plus_weather_mae_change": -4.261153950491092e-05
+  },
+  "limitations": [
+    "Weather fields are normalized and lack measurement provenance.",
+    "Contemporaneous weather is treated as available at prediction time; weather-forecast uncertainty is not modeled.",
+    "Linear-model ablation does not establish feature utility for nonlinear models.",
+    "Only five folds from the short case study are available.",
+    "Feature groups are correlated, so marginal differences are descriptive rather than causal effects."
+  ]
+}

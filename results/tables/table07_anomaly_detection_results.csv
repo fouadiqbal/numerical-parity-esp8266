@@ -1,0 +1,6 @@
+﻿Method,TP,FP,FN,TN,Precision,Recall,F1,Alerts (%)
+Split conformal (95%),21,18,31,863,0.538,0.404,0.462,39 (4.18)
+Adaptive EWMA residual (p99),16,14,36,867,0.533,0.308,0.390,30 (3.22)
+Rolling-week residual (p99),10,1,42,880,0.909,0.192,0.317,11 (1.18)
+Static residual (p99),8,0,44,881,1.000,0.154,0.267,8 (0.86)
+Isolation forest (5%),19,114,33,767,0.143,0.365,0.205,133 (14.26)

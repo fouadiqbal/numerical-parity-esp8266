@@ -1,44 +1,102 @@
-# Smart-Meter Energy Load Forecasting
+# Smart-Meter Forecasting and ESP8266 Edge-ML Reproducibility Package
 
-A reproducible machine-learning notebook for short-term electricity-load forecasting and anomaly investigation using smart-meter readings.
+This package reproduces the project's bounded claim: a compact nine-parameter forecasting computation and residual-threshold decision were transferred from Python to generated C++ and reproduced on a physical ESP8266 over a 933-row held-out partition. It does **not** claim calibrated smart-meter sensing, verified physical kWh, real-world anomaly detection, measured energy per inference, or a worldwide first.
 
-## Overview
+## Package map
 
-The project uses a chronological train/test split to avoid time-series leakage. It engineers calendar and lag features, compares forecasting baselines, and evaluates two complementary anomaly-detection approaches:
+- `data/`: source acquisition, hashes, units warning, and deterministic split indices;
+- `notebooks/`: output-cleared baseline notebook (51 code cells; 0 stored outputs removed);
+- `src/`: preprocessing, forecasting, anomaly, export, parity, and figure/table scripts;
+- `models/`: model manifest and parameter provenance;
+- `esp8266/`: Arduino firmware, generated headers, credential template, capture tools, and build workflow;
+- `results/`: aggregate JSON/CSV evidence and tables, without row-level predictions;
+- `figures/`: 10 figures in PNG, PDF, and SVG;
+- `tests/`: host-C++ and Arduino size-test sources;
+- `references/`: verified Phase 23 BibTeX library;
+- `manuscript/`: the final LaTeX source, compiled PDF, and build instructions;
+- `docs/`: phase reports and evidence boundaries.
 
-- Forecast-residual thresholding from a Random Forest regressor
-- Isolation Forest for unsupervised anomaly detection
+## Exact environment
 
-The notebook is designed as a research-ready baseline that can later support ESP8266/ESP32-based sensing and alerting workflows.
+Python evidence was generated with Python 3.13.2, NumPy 2.5.2, pandas 3.0.5, scikit-learn 1.9.0, SciPy 1.18.1, Matplotlib 3.11.1, and Seaborn 0.13.2. Randomized experiments use seed **42**. Create the environment with either:
 
-## Dataset
+```bash
+conda env create -f environment.yml
+conda activate smart-meter-esp8266-repro
+```
 
-The notebook uses the [Smart Meter Electricity Consumption Dataset](https://www.kaggle.com/datasets/ziya07/smart-meter-electricity-consumption-dataset) on Kaggle. The data is not included in this repository; obtain it from the original source and follow its terms of use.
+or:
 
-## Results in the included run
+```bash
+python -m venv .venv
+python -m pip install -r requirements.txt
+```
 
-- 5,000 smart-meter readings at 30-minute intervals
-- Linear Regression: MAE 0.1310 kWh; RMSE 0.1625 kWh
-- Random Forest: MAE 0.1328 kWh; RMSE 0.1652 kWh
-- Forecast-residual detector: precision 0.900, recall 0.173, F1-score 0.290
-- Isolation Forest detector: precision 0.250, recall 0.058, F1-score 0.094
+## Reproduce the software experiments
 
-These are baseline results using the dataset's provided labels, not validated field-deployment performance.
+Acquire and verify the dataset exactly as described in `data/README.md`, then run from the package root:
 
-## Run locally
+```bash
+python src/audit_dataset.py
+python src/run_phase4_forecasting.py
+python src/run_phase5_walk_forward.py
+python src/run_phase6_statistics.py
+python src/run_phase7_ablation.py
+python src/run_phase8_threshold_sensitivity.py
+python src/run_phase9_anomaly_methods.py
+python src/train_tinyml_edge_model.py
+python src/test_generated_cpp_model.py
+python src/run_phase14_quantization.py
+python src/test_fixed_model_cpp.py
+python src/run_phase21_figures.py
+python src/run_phase23_related_work.py
+python src/run_phase22_tables.py
+```
 
-1. Create a Python 3.10+ environment.
-2. Install requirements with pip install -r requirements.txt.
-3. Download the dataset from Kaggle, update the data path if needed, and run the notebook from top to bottom.
+Training regenerates two ignored local files: `results/tinyml_edge_test_predictions_v2.csv` and `esp8266/tinyml_validation_data.h`. They are required for local parity/full-device validation but must not be committed.
 
-See the [hosted Kaggle notebook](https://www.kaggle.com/code/fouadiqbal/smart-meter-energy-load-forecasting) for the verified run.
+## Reproduce the ESP8266 experiment
 
-## Future directions
+1. Install Arduino IDE and the ESP8266 board core.
+2. Copy `esp8266/secrets.example.h` to a private `esp8266/secrets.h`, or point the workflow to an existing private credential sketch.
+3. Connect a NodeMCU 1.0/ESP8266EX with a data-capable USB cable and identify its COM port.
+4. Build the public eight-vector self-test firmware:
 
-- Walk-forward validation
-- Verified real-meter event evaluation
-- Compact ESP32 edge-alert prototype
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File esp8266/esp8266_workflow.ps1 -Action Build -Port COM11
+   ```
 
-## License
+5. After acquiring the dataset and running `src/train_tinyml_edge_model.py`, upload the locally generated full-validation build:
 
-MIT. The dataset remains subject to its original terms.
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File esp8266/esp8266_workflow.ps1 -Action Upload -Port COM11 -FullValidation
+   ```
+
+6. Close Arduino Serial Monitor and capture at least 90 seconds:
+
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File esp8266/capture_esp8266_serial.ps1 -Port COM11 -DurationSeconds 90
+   ```
+
+7. Parse the private capture into aggregate evidence:
+
+   ```bash
+   python src/parse_phase11_device_capture.py data/esp8266/<capture>.jsonl --port COM11
+   python src/parse_phase12_timing_capture.py data/esp8266/<capture>.jsonl
+   ```
+
+The device replay is HIL verification of numerical execution, not live calibrated sensing. Never connect mains voltage directly to an ESP8266.
+
+## Verified evidence snapshot
+
+- Python/ESP8266 prediction agreement: 933/933;
+- threshold-decision agreement: 933/933;
+- maximum absolute difference: 0.000000089 normalized target units;
+- timing evidence: 30 batches × 2,000 predictions, mean 50.427 microseconds;
+- full HIL validation firmware: RAM 37%, flash 28%, IRAM 92%;
+- staged public eight-vector firmware: RAM 37%, flash 24%, IRAM 92%;
+- anomaly result: agreement with supplied pseudo-labels, recall 0.154.
+
+## Data, licensing, and citation
+
+The source listing displays CC0, but its upstream measurement provenance is undocumented. Raw data and the complete validation vectors are not distributed. Original repository code/documentation are MIT licensed. See `THIRD_PARTY_NOTICES.md`, `docs/PHASE_24_COPYRIGHT_LICENSING.md`, and `CITATION.cff`.

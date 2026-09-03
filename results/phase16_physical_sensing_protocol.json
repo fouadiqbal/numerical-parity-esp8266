@@ -1,0 +1,62 @@
+{
+  "phase": 16,
+  "status": "future work; no calibrated voltage/current sensing has been performed",
+  "recommended_architecture": {
+    "voltage_sensor": "isolated low-voltage AC-AC adapter or certified isolated voltage transducer",
+    "current_sensor": "split-core current transformer with correctly designed burden and protection",
+    "adc": "two-channel simultaneous-sampling external ADC such as ADS131M02 on a reviewed PCB/evaluation platform",
+    "processor": "ESP8266 via SPI",
+    "reference": "calibrated power/energy analyzer with documented accuracy",
+    "output": "timestamped Vrms, Irms, real power, apparent power, power factor, and integrated energy"
+  },
+  "reasons_not_to_use_a0_as_primary_meter": [
+    "only one ADC channel",
+    "10-bit SAR result",
+    "bare-chip external input range is 0 to 1.0 V",
+    "NodeMCU clone input scaling varies",
+    "Espressif warns that Wi-Fi/current-state changes can affect ADC behavior",
+    "voltage and current cannot be sampled simultaneously"
+  ],
+  "recommended_sampling": {
+    "simultaneous_channels": 2,
+    "sample_rate_per_channel": "4 kSPS initial target for 50 Hz evaluation",
+    "calculation_window": "1 second",
+    "forecast_aggregation": "30-minute energy intervals to match the present model contract",
+    "quantized_buffer_option": "store normalized 30-minute values in Q15 form if the Phase 14 fixed-point path is later adopted"
+  },
+  "calculation": {
+    "vrms": "sqrt(mean(v[n]^2))",
+    "irms": "sqrt(mean(i[n]^2))",
+    "real_power": "mean(v[n] * i[n])",
+    "apparent_power": "Vrms * Irms",
+    "power_factor": "real_power / apparent_power",
+    "energy": "sum(real_power_window * window_duration)"
+  },
+  "validation_stages": [
+    "zero-input offset and noise characterization",
+    "isolated low-voltage AC bench validation",
+    "voltage and current gain calibration",
+    "phase calibration using resistive and reactive loads",
+    "held-out known-load accuracy validation",
+    "24-hour repeatability and packet-loss test",
+    "multi-day 30-minute aggregation and live lag-buffer validation",
+    "qualified mains field trial only after enclosure and safety review"
+  ],
+  "required_results_before_claiming_a_smart_meter": [
+    "reference-traceable voltage/current/power/energy accuracy",
+    "uncertainty budget",
+    "held-out calibration validation",
+    "synchronized timestamps",
+    "missing-data and packet-loss report",
+    "live 336-sample history-buffer operation",
+    "edge/cloud prediction agreement on newly collected data",
+    "physically verified event annotations for anomaly evaluation"
+  ],
+  "safety": {
+    "mains_work": "qualified person only",
+    "no_breadboard_mains": true,
+    "enclosure_fuse_and_strain_relief_required": true,
+    "ct_warning": "Never leave a current-output CT secondary open-circuit while clamped around an energized conductor.",
+    "current_project_boundary": "low-voltage firmware/HIL only"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "phase": 10,
+  "test": "generated_cpp_model_vs_python_reference",
+  "rows": 933,
+  "target_units": "normalized dataset units; physical kWh not established",
+  "prediction_tolerance": 1e-06,
+  "prediction_matches": 933,
+  "prediction_mismatches": 0,
+  "mean_absolute_numerical_difference": 1.7288454409287046e-08,
+  "maximum_absolute_numerical_difference": 7.557157177817686e-08,
+  "anomaly_decision_matches": 933,
+  "anomaly_decision_mismatches": 0,
+  "compiler": {
+    "path": "C:\\Program Files\\CodeBlocks\\MinGW\\bin\\g++.exe",
+    "version": "g++.exe (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 8.1.0",
+    "standard": "C++17",
+    "optimization": "-O2",
+    "stderr": ""
+  },
+  "passed": true
+}

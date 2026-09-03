@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "model": "standardized_linear_regression_residual_detector",
+  "target_units": "normalized dataset units; physical kWh not established",
+  "feature_names": [
+    "lag_1",
+    "lag_2",
+    "lag_48",
+    "lag_336",
+    "hour",
+    "day_of_week",
+    "month",
+    "is_weekend"
+  ],
+  "dataset_rows_raw": 5000,
+  "dataset_rows_after_lags": 4664,
+  "fit_rows": 2984,
+  "calibration_rows": 747,
+  "test_rows": 933,
+  "residual_threshold_normalized": 0.3830260556441207,
+  "mae_normalized": 0.1307837086033585,
+  "rmse_normalized": 0.1623896726478911,
+  "classification": {
+    "true_positive": 8,
+    "false_positive": 0,
+    "false_negative": 44,
+    "true_negative": 881,
+    "precision": 1.0,
+    "recall": 0.15384615384615385,
+    "f1": 0.2666666666666667
+  }
+}

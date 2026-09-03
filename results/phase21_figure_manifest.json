@@ -1,0 +1,253 @@
+{
+  "phase": 21,
+  "date": "2026-09-03",
+  "status": "generated_with_interim_figure_8",
+  "environment": {
+    "python": "3.13.2",
+    "matplotlib": "3.11.1",
+    "numpy": "2.5.2",
+    "pandas": "3.0.5"
+  },
+  "style": {
+    "png_dpi": 300,
+    "vector_formats": [
+      "PDF",
+      "SVG"
+    ],
+    "palette": "color-vision-deficiency-conscious Okabe-Ito-derived palette",
+    "units_policy": "normalized target units where applicable; no physical kWh claim"
+  },
+  "figures": [
+    {
+      "figure": 1,
+      "title": "Complete cloud-to-edge architecture",
+      "placement": "main",
+      "evidence_status": "verified plus explicitly dashed future path",
+      "files": {
+        "png": {
+          "path": "figures/fig01_cloud_to_edge_architecture.png",
+          "bytes": 95513,
+          "sha256": "053AA6C46712C381B7F3000405E1B1B9AFC14E39BDA9AB8FE5AC58F8B339B94C"
+        },
+        "pdf": {
+          "path": "figures/fig01_cloud_to_edge_architecture.pdf",
+          "bytes": 26416,
+          "sha256": "FCDE44D528EF04B540471F4619DF1AF978E7A9955654F266EF1369D62203863D"
+        },
+        "svg": {
+          "path": "figures/fig01_cloud_to_edge_architecture.svg",
+          "bytes": 61853,
+          "sha256": "102C42CFDD5C856C5F7F567A40B92222CC9F3D495EFBE5063ED91F561FA793F2"
+        }
+      }
+    },
+    {
+      "figure": 2,
+      "title": "Chronological/walk-forward validation protocol",
+      "placement": "main",
+      "evidence_status": "verified",
+      "files": {
+        "png": {
+          "path": "figures/fig02_walk_forward_protocol.png",
+          "bytes": 72024,
+          "sha256": "179A42751AB7AA1245C8302F06C08DAAEC01C39D40FB01FC8D4B98B3EE4451B1"
+        },
+        "pdf": {
+          "path": "figures/fig02_walk_forward_protocol.pdf",
+          "bytes": 13318,
+          "sha256": "AB7C37A02D0BFF84BEB9C80755B015485604476AD10D5592D33172F3191188B9"
+        },
+        "svg": {
+          "path": "figures/fig02_walk_forward_protocol.svg",
+          "bytes": 43888,
+          "sha256": "01E663C2B5CE3F7830854EAB47F40443D7FC967378102A5C5F5BD7016C59C1E3"
+        }
+      }
+    },
+    {
+      "figure": 3,
+      "title": "Forecasting model comparison",
+      "placement": "main",
+      "evidence_status": "verified",
+      "files": {
+        "png": {
+          "path": "figures/fig03_forecasting_model_comparison.png",
+          "bytes": 92195,
+          "sha256": "60281374C830EA1AD2F3428C5C048F4FC86F1E559B37911268731A72D9570942"
+        },
+        "pdf": {
+          "path": "figures/fig03_forecasting_model_comparison.pdf",
+          "bytes": 19740,
+          "sha256": "15C1D28162D8B7AFA8E48E2A329FE9F165FDF1959D6EE394EA77C2746C22E3E5"
+        },
+        "svg": {
+          "path": "figures/fig03_forecasting_model_comparison.svg",
+          "bytes": 57890,
+          "sha256": "EE045DD7C8133975E0617D89AD3FECF2CD4465270F9E9DE2A8827A4DA818E892"
+        }
+      }
+    },
+    {
+      "figure": 4,
+      "title": "Feature ablation",
+      "placement": "supplementary",
+      "evidence_status": "verified",
+      "files": {
+        "png": {
+          "path": "figures/fig04_feature_ablation.png",
+          "bytes": 141727,
+          "sha256": "DFE347C8119543EFD965C37C65CEC860DD37109606DB5B3E993AD95444A49AAC"
+        },
+        "pdf": {
+          "path": "figures/fig04_feature_ablation.pdf",
+          "bytes": 19744,
+          "sha256": "28B83F4E91CEB794301A5A26389816A4E6E4B20BCF206DC0C823996DA7864A03"
+        },
+        "svg": {
+          "path": "figures/fig04_feature_ablation.svg",
+          "bytes": 45162,
+          "sha256": "898573E214806D7BD9D2912E7DA44EB06ACDF23A88F29D174E17085916E86360"
+        }
+      }
+    },
+    {
+      "figure": 5,
+      "title": "Anomaly precision-recall curve",
+      "placement": "supplementary",
+      "evidence_status": "agreement with supplied labels only",
+      "files": {
+        "png": {
+          "path": "figures/fig05_anomaly_precision_recall.png",
+          "bytes": 81161,
+          "sha256": "32A098FD6FEE2FA3D2B96A533BF8C98DF4FEDA65A3F36A0753AC8077C377C375"
+        },
+        "pdf": {
+          "path": "figures/fig05_anomaly_precision_recall.pdf",
+          "bytes": 12025,
+          "sha256": "E26B4DF3C49F01B6734FBA4380E11FC06A7C790002E74050DA589B0E807E757C"
+        },
+        "svg": {
+          "path": "figures/fig05_anomaly_precision_recall.svg",
+          "bytes": 41478,
+          "sha256": "9F918D37B96CAD6806EBD7F193D5FDC4DE8F7D67E1C9A0FCD2F485486ACD31D2"
+        }
+      }
+    },
+    {
+      "figure": 6,
+      "title": "F1 and alerts versus threshold",
+      "placement": "supplementary",
+      "evidence_status": "agreement with supplied labels only",
+      "files": {
+        "png": {
+          "path": "figures/fig06_f1_and_alerts_vs_threshold.png",
+          "bytes": 100949,
+          "sha256": "40F26D0AD4DD21912BC91CF88790088E6FA401F74A4697133335BFE90CF80A6D"
+        },
+        "pdf": {
+          "path": "figures/fig06_f1_and_alerts_vs_threshold.pdf",
+          "bytes": 14718,
+          "sha256": "1F6395FD852F77402745C5F555F3E0F9F4842F729CE7D0A93BBAB513BB5D19DB"
+        },
+        "svg": {
+          "path": "figures/fig06_f1_and_alerts_vs_threshold.svg",
+          "bytes": 53265,
+          "sha256": "BD02054BE37ADE12F3AA57B2D20C2C68F575EF65750D44B158DB77EFF722BE3A"
+        }
+      }
+    },
+    {
+      "figure": 7,
+      "title": "Python to C++ to ESP8266 validation pipeline",
+      "placement": "main",
+      "evidence_status": "verified",
+      "files": {
+        "png": {
+          "path": "figures/fig07_python_cpp_esp8266_validation.png",
+          "bytes": 92449,
+          "sha256": "E26E6995DCCF174E02B928A7A342753F7319D2ADE4AF7DC401B311CB51D06268"
+        },
+        "pdf": {
+          "path": "figures/fig07_python_cpp_esp8266_validation.pdf",
+          "bytes": 25163,
+          "sha256": "39D5D7D2A000B7FED7297354D0B4F45F83058E768B5272F65B04C2C868309B21"
+        },
+        "svg": {
+          "path": "figures/fig07_python_cpp_esp8266_validation.svg",
+          "bytes": 59733,
+          "sha256": "07CA11166521083004CD7F4962DC2A6B4648B5A571EFF5CC087AE24E4A1E5FAE"
+        }
+      }
+    },
+    {
+      "figure": 8,
+      "title": "Python/device parity and error bound",
+      "placement": "interim main",
+      "evidence_status": "aggregate evidence only; true distribution pending per-vector device capture",
+      "files": {
+        "png": {
+          "path": "figures/fig08_hil_parity_error_bounds_INTERIM.png",
+          "bytes": 114416,
+          "sha256": "03C9640DB17B0B389A2E096265404C5436D9642B312B1A898E0C4F19D9B6B4A3"
+        },
+        "pdf": {
+          "path": "figures/fig08_hil_parity_error_bounds_INTERIM.pdf",
+          "bytes": 30935,
+          "sha256": "BDE69C45A63A54EE2A072045C87C891BA22C47ECFCFC46A20326F686EFCAE486"
+        },
+        "svg": {
+          "path": "figures/fig08_hil_parity_error_bounds_INTERIM.svg",
+          "bytes": 74712,
+          "sha256": "F34B5037571BD42B7D1A99A21DE90A6C7B67BD4234654CC283FF46DA7C0363BA"
+        }
+      }
+    },
+    {
+      "figure": 9,
+      "title": "ESP8266 latency distribution",
+      "placement": "main",
+      "evidence_status": "distribution of 30 batch averages",
+      "files": {
+        "png": {
+          "path": "figures/fig09_esp8266_latency_distribution.png",
+          "bytes": 82175,
+          "sha256": "631748EB0C97CB264923C845D80E8F7E3F78ABA3BB7E8AB0D7764339108C16DE"
+        },
+        "pdf": {
+          "path": "figures/fig09_esp8266_latency_distribution.pdf",
+          "bytes": 14496,
+          "sha256": "E2ED80CD1BF9C0A87B967509F7D3914B2C6087DB47F4E0C04CF0A73F4257DEEC"
+        },
+        "svg": {
+          "path": "figures/fig09_esp8266_latency_distribution.svg",
+          "bytes": 60012,
+          "sha256": "1628F8734D258BFAB1B2CA7E8AEE451CA99AD33527F7B12C5BA04690C47B74ED"
+        }
+      }
+    },
+    {
+      "figure": 10,
+      "title": "Memory, flash and IRAM utilization",
+      "placement": "main",
+      "evidence_status": "verified whole-firmware builds",
+      "files": {
+        "png": {
+          "path": "figures/fig10_memory_flash_iram_utilization.png",
+          "bytes": 83882,
+          "sha256": "BF7F4B9C3BFF99B89E00579039E75D39EDCBA7831020ED4756A61BCC6F505D1D"
+        },
+        "pdf": {
+          "path": "figures/fig10_memory_flash_iram_utilization.pdf",
+          "bytes": 18607,
+          "sha256": "4E13D162D3A149D87F71ABD3F65C828D713D244E3883BFFBC116052D86FE2338"
+        },
+        "svg": {
+          "path": "figures/fig10_memory_flash_iram_utilization.svg",
+          "bytes": 47382,
+          "sha256": "FE279A85C5C0F9F631AB6D19B409ADA0F58C2E5F7CAC3CE45AAAD1BEC195960F"
+        }
+      }
+    }
+  ],
+  "figure_8_limitation": "The physical capture retained 933/933 match counts and maximum absolute difference but not all per-vector device differences. The interim aggregate figure must be replaced after a newly instrumented physical run before calling it an error distribution."
+}

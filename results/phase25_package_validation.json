@@ -1,0 +1,53 @@
+{
+  "phase": 25,
+  "validation_date_local": "2026-09-03",
+  "package": "release/smart-meter-esp8266-reproducibility",
+  "structural_validation": {
+    "status": "passed",
+    "manifested_files": 161,
+    "json_and_notebook_files_parsed": 31,
+    "text_files_scanned": 140,
+    "stored_notebook_outputs": 0,
+    "denied_files": 0,
+    "secret_pattern_matches": 0,
+    "absolute_workspace_paths": 0,
+    "unadapted_layout_paths": 0
+  },
+  "host_cpp_validation": {
+    "status": "passed",
+    "command": "python src/test_generated_cpp_model.py --csv <verified-source-csv> --output <temporary-output>",
+    "compiler": "g++.exe (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 8.1.0",
+    "language_standard": "C++17",
+    "optimization": "-O2",
+    "rows": 933,
+    "prediction_matches": 933,
+    "prediction_mismatches": 0,
+    "anomaly_decision_matches": 933,
+    "anomaly_decision_mismatches": 0,
+    "mean_absolute_numerical_difference": 1.7288454409287046e-08,
+    "maximum_absolute_numerical_difference": 7.557157177817686e-08,
+    "target_units": "normalized dataset units; physical kWh not established"
+  },
+  "arduino_build_validation": {
+    "status": "passed",
+    "command": "powershell -ExecutionPolicy Bypass -File esp8266/esp8266_workflow.ps1 -Action Build -Port COM11",
+    "fqbn": "esp8266:esp8266:nodemcuv2",
+    "mode": "public eight-vector self-test; no full 933-row validation header",
+    "ram": {
+      "used_bytes": 30124,
+      "available_bytes": 80192,
+      "reported_percent": 37
+    },
+    "iram": {
+      "used_bytes": 60463,
+      "available_bytes": 65536,
+      "reported_percent": 92
+    },
+    "flash_code": {
+      "used_bytes": 260308,
+      "available_bytes": 1048576,
+      "reported_percent": 24
+    }
+  },
+  "release_decision": "package validated locally; ready for remote upload after final confirmation"
+}

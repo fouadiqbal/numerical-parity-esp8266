@@ -1,0 +1,22 @@
+{
+  "phase": 27,
+  "status": "passed",
+  "build_date_local": "2026-09-03",
+  "source": "manuscript/smart_meter_esp8266_edge_ml.tex",
+  "pdf": "manuscript/smart_meter_esp8266_edge_ml.pdf",
+  "compiler": "Tectonic 0.17.0",
+  "pages": 9,
+  "bibliography_entries": 13,
+  "numbered_tables": 4,
+  "numbered_figure_environments": 5,
+  "figure_images_used": 6,
+  "unresolved_references": 0,
+  "multiply_defined_labels": 0,
+  "overfull_boxes": 0,
+  "missing_character_warnings": 0,
+  "visual_pages_inspected": 9,
+  "visual_qa_passed": true,
+  "tex_sha256": "ECBB2533770822D0EBD5D210C5145D7441B880782461F9E197748992EAA79E37",
+  "pdf_sha256": "6C091E882C892A1181BEC309F397B9DE8A26F1423DF66670D371220F4DB0894E",
+  "claim_boundary": "Numerical portability and measured embedded cost on one ESP8266 and one normalized dataset; no calibrated sensing, physical-kWh, real-event anomaly, energy-efficiency, secure-deployment, or novelty claim."
+}

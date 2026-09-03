@@ -1,0 +1,7 @@
+﻿Model,Configuration,Role
+Compact edge linear,"Standardized least squares; 8 features; 2,984 fit + 747 calibration; FP32 deployment",Selected
+Linear regression,"OLS with intercept; 3,731 training rows",Reference
+Random forest,200 trees; depth 12; min leaf 2; seed 42,Benchmark
+Histogram gradient boosting,lr=0.05; iter=200; leaves=31; min leaf=20; L2=0.1,Benchmark
+Seasonal naive (lag 48),Previous-day value at 30-min sampling (lag 48),Benchmark
+Persistence (lag 1),Previous observation (lag 1),Benchmark

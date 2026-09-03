@@ -1,0 +1,358 @@
+{
+  "phase": 26,
+  "audit_date_local": "2026-09-03",
+  "status": "passed",
+  "scope": [
+    {
+      "path": "README.md",
+      "nonblank_records": 60
+    },
+    {
+      "path": "smart_meter_energy_load_forecasting.ipynb",
+      "nonblank_records": 748
+    },
+    {
+      "path": "firmware/esp8266_smart_meter/README.md",
+      "nonblank_records": 136
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "nonblank_records": 192
+    }
+  ],
+  "candidate_occurrences": [
+    {
+      "path": "README.md",
+      "location": "line 1",
+      "term": "smart_meter",
+      "disposition": "manual_review_required",
+      "context": "# Smart-Meter Energy Load Forecasting"
+    },
+    {
+      "path": "README.md",
+      "location": "line 3",
+      "term": "smart_meter",
+      "disposition": "contextual_or_explicit_boundary",
+      "context": "A reproducible machine-learning case study for short-horizon load forecasting and anomaly-label investigation using a normalized smart-meter-style dataset."
+    },
+    {
+      "path": "README.md",
+      "location": "line 21",
+      "term": "smart_meter",
+      "disposition": "contextual_or_explicit_boundary",
+      "context": "The notebook uses the [Smart Meter Electricity Consumption Dataset](https://www.kaggle.com/datasets/ziya07/smart-meter-electricity-consumption-dataset) on Kaggle. The listing displays a CC0 license, but it does not document a primary measurement campaign or inverse scaling. The downloaded file's numeric columns are all bounded approximately from 0 to 1, so this repository reports errors in normalized target units rather than assuming physical kWh. The data is not included in this repository; obtain it from the original source and follow its terms of use. See `docs/PHASE_3_DATASET_VALIDATION.md` for the provenance decision."
+    },
+    {
+      "path": "README.md",
+      "location": "line 69",
+      "term": "smart_meter",
+      "disposition": "manual_review_required",
+      "context": "For the reproducible hosted version, see the [Kaggle notebook](https://www.kaggle.com/code/fouadiqbal/smart-meter-energy-load-forecasting)."
+    },
+    {
+      "path": "smart_meter_energy_load_forecasting.ipynb",
+      "location": "cell 1, source line 1",
+      "term": "smart_meter",
+      "disposition": "manual_review_required",
+      "context": "# Smart-Meter Energy Load Forecasting and Anomaly Detection"
+    },
+    {
+      "path": "smart_meter_energy_load_forecasting.ipynb",
+      "location": "cell 3, source line 1",
+      "term": "smart_meter",
+      "disposition": "manual_review_required",
+      "context": "print(\"Smart-meter ML project workspace is ready.\")"
+    },
+    {
+      "path": "smart_meter_energy_load_forecasting.ipynb",
+      "location": "cell 4, source line 1",
+      "term": "first",
+      "disposition": "manual_review_required",
+      "context": "## 1. Data Loading and First Inspection"
+    },
+    {
+      "path": "smart_meter_energy_load_forecasting.ipynb",
+      "location": "cell 5, source line 2",
+      "term": "smart_meter",
+      "disposition": "contextual_or_explicit_boundary",
+      "context": "file_path = \"/kaggle/input/smart-meter-electricity-consumption-dataset/smart_meter_data.csv\""
+    },
+    {
+      "path": "smart_meter_energy_load_forecasting.ipynb",
+      "location": "cell 10, source line 7",
+      "term": "first",
+      "disposition": "manual_review_required",
+      "context": "print(\"First timestamp:\", df[\"Timestamp\"].min())"
+    },
+    {
+      "path": "smart_meter_energy_load_forecasting.ipynb",
+      "location": "cell 12, source line 9",
+      "term": "smart_meter",
+      "disposition": "contextual_or_explicit_boundary",
+      "context": "plt.title(\"Smart-Meter Electricity Consumption Over Time\")"
+    },
+    {
+      "path": "smart_meter_energy_load_forecasting.ipynb",
+      "location": "cell 38, source line 3",
+      "term": "smart_meter",
+      "disposition": "contextual_or_explicit_boundary",
+      "context": "I trained on the earlier 80% of readings and reserved the later 20% as unseen future data. This approximates chronological one-step-ahead evaluation; it is not evidence of a deployed or calibrated smart-meter system."
+    },
+    {
+      "path": "smart_meter_energy_load_forecasting.ipynb",
+      "location": "cell 44, source line 1",
+      "term": "first",
+      "disposition": "manual_review_required",
+      "context": "### First ML model result"
+    },
+    {
+      "path": "smart_meter_energy_load_forecasting.ipynb",
+      "location": "cell 44, source line 6",
+      "term": "generalizable",
+      "disposition": "explicitly_bounded",
+      "context": "- Interpretation: The Linear Regression model, incorporating past load values and calendar features, has lower MAE and RMSE than the persistence baseline on this one held-out partition. This indicates that these features are useful within this dataset and split; broader generalization was not tested in this notebook. The model captures more complex patterns than just the previous time step's value."
+    },
+    {
+      "path": "smart_meter_energy_load_forecasting.ipynb",
+      "location": "cell 71, source line 59",
+      "term": "smart_meter",
+      "disposition": "contextual_or_explicit_boundary",
+      "context": "plt.title(\"Comparison of Smart-Meter Anomaly Detectors\")"
+    },
+    {
+      "path": "smart_meter_energy_load_forecasting.ipynb",
+      "location": "cell 72, source line 3",
+      "term": "first",
+      "disposition": "explicitly_bounded",
+      "context": "- Plot period: first 500 future test readings"
+    },
+    {
+      "path": "firmware/esp8266_smart_meter/README.md",
+      "location": "line 1",
+      "term": "smart_meter",
+      "disposition": "manual_review_required",
+      "context": "# ESP8266 Smart-Meter Prototype"
+    },
+    {
+      "path": "firmware/esp8266_smart_meter/README.md",
+      "location": "line 174",
+      "term": "secure",
+      "disposition": "explicitly_bounded",
+      "context": "## Security limitation"
+    },
+    {
+      "path": "firmware/esp8266_smart_meter/README.md",
+      "location": "line 178",
+      "term": "secure",
+      "disposition": "manual_review_required",
+      "context": "deployment, migrate to HTTPS with certificate validation or to a secured MQTT"
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "location": "line 35",
+      "term": "smart_meter",
+      "disposition": "contextual_or_explicit_boundary",
+      "context": "This paper studies a bounded question in edge machine learning: whether a compact forecasting computation and its residual-threshold decision can be transferred reproducibly from Python to a physical ESP8266. The case study uses 5,000 half-hourly rows from a public smart-meter-style dataset whose numeric variables are normalized and whose physical measurement provenance and inverse scaling are not documented. Six forecasting approaches were evaluated using a single chronological holdout and five expanding-window folds with 2,000 non-overlapping test predictions. The floating-point edge model achieved mean fold MAE $0.133858\\pm0.004271$ in normalized target units. Its absolute-error difference from ordinary linear regression was not statistically distinguishable under the stated HAC/Holm procedure ($p_{\\mathrm{adj}}=0.745$), while its difference from random forest was small but statistically distinguishable ($-0.001378$, $p_{\\mathrm{adj}}=0.0345$). Five residual or isolation-based anoma"
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "location": "line 35",
+      "term": "energy_efficient",
+      "disposition": "explicitly_bounded",
+      "context": "This paper studies a bounded question in edge machine learning: whether a compact forecasting computation and its residual-threshold decision can be transferred reproducibly from Python to a physical ESP8266. The case study uses 5,000 half-hourly rows from a public smart-meter-style dataset whose numeric variables are normalized and whose physical measurement provenance and inverse scaling are not documented. Six forecasting approaches were evaluated using a single chronological holdout and five expanding-window folds with 2,000 non-overlapping test predictions. The floating-point edge model achieved mean fold MAE $0.133858\\pm0.004271$ in normalized target units. Its absolute-error difference from ordinary linear regression was not statistically distinguishable under the stated HAC/Holm procedure ($p_{\\mathrm{adj}}=0.745$), while its difference from random forest was small but statistically distinguishable ($-0.001378$, $p_{\\mathrm{adj}}=0.0345$). Five residual or isolation-based anoma"
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "location": "line 53",
+      "term": "smart_meter",
+      "disposition": "contextual_or_explicit_boundary",
+      "context": "The contributions are a reproducible chronological evaluation pipeline; an explicit threshold and anomaly-method sensitivity analysis; a generated, auditable C++ model with complete held-out parity checks; and a whole-firmware timing/resource report with clear claim boundaries. No claim of algorithmic novelty, calibrated smart-meter operation, or worldwide first is made."
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "location": "line 53",
+      "term": "first",
+      "disposition": "explicitly_bounded",
+      "context": "The contributions are a reproducible chronological evaluation pipeline; an explicit threshold and anomaly-method sensitivity analysis; a generated, auditable C++ model with complete held-out parity checks; and a whole-firmware timing/resource report with clear claim boundaries. No claim of algorithmic novelty, calibrated smart-meter operation, or worldwide first is made."
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "location": "line 53",
+      "term": "novel",
+      "disposition": "explicitly_bounded",
+      "context": "The contributions are a reproducible chronological evaluation pipeline; an explicit threshold and anomaly-method sensitivity analysis; a generated, auditable C++ model with complete held-out parity checks; and a whole-firmware timing/resource report with clear claim boundaries. No claim of algorithmic novelty, calibrated smart-meter operation, or worldwide first is made."
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "location": "line 58",
+      "term": "smart_meter",
+      "disposition": "contextual_or_explicit_boundary",
+      "context": "For embedded intelligence, Hu and Tang presented an IoT smart-metering edge architecture \\cite{hu2020edge}; Li et al. demonstrated federated split learning across Cortex-M4 meters and edge computers \\cite{li2024federated}; and Gajendran et al. used ESP8266 nodes for physical data acquisition while evaluating forecasting on computer hardware \\cite{gajendran2026ihems}. Kolosov et al. combined calibrated high-frequency sensing with embedded energy disaggregation on substantially stronger platforms \\cite{kolosov2025instrumental}. MLPerf Tiny and MCUNet provide stronger general benchmarking and deployment frameworks than this application-specific experiment \\cite{banbury2021mlperf,lin2020mcunet}."
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "location": "line 60",
+      "term": "novel",
+      "disposition": "explicitly_bounded",
+      "context": "These studies prevent a broad novelty claim. The present study instead contributes a transparent, small-footprint transfer audit on an ESP8266: byte-level model state, complete row-wise Python/C++/device agreement, threshold-decision parity, and measured whole-firmware constraints. Its dataset evidence is weaker than studies using documented physical meters, and this limitation is treated as part of the result rather than hidden."
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "location": "line 64",
+      "term": "smart_meter",
+      "disposition": "contextual_or_explicit_boundary",
+      "context": "The analyzed CSV is version 1 of the Kaggle listing \\emph{Smart Meter Electricity Consumption Dataset} \\cite{kaggleSmartMeter2024}. Its SHA-256 fingerprint is \\texttt{D48DF940FD29444F...D9D5F9DC88F588}. The table contains 5,000 rows and seven columns from 1 January through 14 April 2024 at 30-minute intervals. After constructing a seven-day lag, 4,664 rows remain. No missing cells, duplicate timestamps, or non-30-minute gaps were found."
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "location": "line 73",
+      "term": "generalizable",
+      "disposition": "explicitly_bounded",
+      "context": "Paired absolute-error differences use a moving-block percentile bootstrap with 10,000 replicates and block length 48. A Diebold--Mariano-style mean loss-differential statistic uses a Bartlett Newey--West HAC variance with lag 48; five comparisons are Holm-adjusted. Statistical significance is not treated as evidence of cross-dataset generalization."
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "location": "line 76",
+      "term": "deployable",
+      "disposition": "explicitly_bounded",
+      "context": "The device rule compares absolute forecast residuals with the 99th percentile of 747 chronological calibration residuals, giving a threshold of 0.383026 normalized units. Sensitivity was evaluated at percentiles 90, 92.5, 95, 97.5, 99, and 99.5. Additional methods were a rolling-week p99 threshold, adaptive EWMA p99 threshold, split-conformal 95\\% threshold, and Isolation Forest with 5\\% contamination. Precision, recall, F1, confusion counts, and alert rate describe agreement with the supplied labels. The retrospectively best threshold is not proposed as a deployable operating point because choosing it on final test labels would bias evaluation."
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "location": "line 87",
+      "term": "generalizable",
+      "disposition": "explicitly_bounded",
+      "context": "Table~\\ref{tab:forecasting} summarizes the expanding-window experiment. The compact FP32 and ordinary linear models are numerically indistinguishable at the reported precision because they implement the same affine mapping with different serialization. Both outperform naive baselines on this dataset. The compact model's 1.02\\% MAE difference relative to random forest is statistically distinguishable under the stated test, but the absolute difference is small and should not be generalized beyond this case study."
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "location": "line 219",
+      "term": "energy_efficient",
+      "disposition": "explicitly_bounded",
+      "context": "The dataset has undocumented primary provenance, normalized values without inverse scaling, a short time span, and algorithm-generated anomaly labels. Only one dataset and one ESP8266 board were evaluated. The statistical procedure uses a prespecified one-day block/HAC lag and only five folds. The HIL experiment replays stored features instead of exercising a live lag buffer. Timing is a model-kernel batch average, and no end-to-end latency, current, power, or energy-per-inference measurement was made. The prototype telemetry uses HTTP and is not suitable for protecting credentials in field use. No independently calibrated voltage, current, power, or energy sensor was evaluated. These limitations prohibit claims of physical kWh accuracy, secure operation, energy efficiency, real-world anomaly performance, or general deployment readiness."
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "location": "line 219",
+      "term": "secure",
+      "disposition": "explicitly_bounded",
+      "context": "The dataset has undocumented primary provenance, normalized values without inverse scaling, a short time span, and algorithm-generated anomaly labels. Only one dataset and one ESP8266 board were evaluated. The statistical procedure uses a prespecified one-day block/HAC lag and only five folds. The HIL experiment replays stored features instead of exercising a live lag buffer. Timing is a model-kernel batch average, and no end-to-end latency, current, power, or energy-per-inference measurement was made. The prototype telemetry uses HTTP and is not suitable for protecting credentials in field use. No independently calibrated voltage, current, power, or energy sensor was evaluated. These limitations prohibit claims of physical kWh accuracy, secure operation, energy efficiency, real-world anomaly performance, or general deployment readiness."
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "location": "line 219",
+      "term": "real_world",
+      "disposition": "explicitly_bounded",
+      "context": "The dataset has undocumented primary provenance, normalized values without inverse scaling, a short time span, and algorithm-generated anomaly labels. Only one dataset and one ESP8266 board were evaluated. The statistical procedure uses a prespecified one-day block/HAC lag and only five folds. The HIL experiment replays stored features instead of exercising a live lag buffer. Timing is a model-kernel batch average, and no end-to-end latency, current, power, or energy-per-inference measurement was made. The prototype telemetry uses HTTP and is not suitable for protecting credentials in field use. No independently calibrated voltage, current, power, or energy sensor was evaluated. These limitations prohibit claims of physical kWh accuracy, secure operation, energy efficiency, real-world anomaly performance, or general deployment readiness."
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "location": "line 225",
+      "term": "secure",
+      "disposition": "explicitly_bounded",
+      "context": "Future experiments should use an openly documented or independently collected meter dataset covering multiple seasons and verified events. The sensing stage must be isolated, reviewed, and calibrated against a trusted reference instrument before live-load claims. A timestamped circular buffer should be tested for startup, missing observations, clock drift, and restart recovery. Thresholds should be prespecified on training/calibration data and evaluated once on independent events. End-to-end sensing-to-alert latency, packet loss, current, power, and energy per inference should be measured. The security transport should migrate from prototype HTTP to certificate-validated HTTPS or authenticated MQTT. Finally, the Q15/Q30 candidate should undergo the same physical parity, timing, and whole-firmware resource protocol before any replacement decision."
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "location": "line 228",
+      "term": "smart_meter",
+      "disposition": "contextual_or_explicit_boundary",
+      "context": "This study demonstrates a reproducible method for transferring a compact forecasting and residual-decision computation from Python to a physical ESP8266. Across the complete 933-row held-out replay, host C++ and device execution preserved every prediction match and every threshold decision within sub-$10^{-7}$ normalized-unit difference. The board averaged $50.427\\,\\mu$s per prediction over 30 batches, while whole-firmware IRAM use reached 92\\%. Chronological forecasting and anomaly comparisons provide context, but they do not convert the normalized dataset or publisher-supplied labels into calibrated physical evidence. The defensible outcome is therefore implementation fidelity with explicit resource and validity boundaries, not a new forecasting algorithm or a deployable smart meter."
+    },
+    {
+      "path": "manuscript/smart_meter_esp8266_edge_ml.tex",
+      "location": "line 228",
+      "term": "deployable",
+      "disposition": "explicitly_bounded",
+      "context": "This study demonstrates a reproducible method for transferring a compact forecasting and residual-decision computation from Python to a physical ESP8266. Across the complete 933-row held-out replay, host C++ and device execution preserved every prediction match and every threshold decision within sub-$10^{-7}$ normalized-unit difference. The board averaged $50.427\\,\\mu$s per prediction over 30 batches, while whole-firmware IRAM use reached 92\\%. Chronological forecasting and anomaly comparisons provide context, but they do not convert the normalized dataset or publisher-supplied labels into calibrated physical evidence. The defensible outcome is therefore implementation fidelity with explicit resource and validity boundaries, not a new forecasting algorithm or a deployable smart meter."
+    }
+  ],
+  "reviewed_contextual_nonclaims": [
+    {
+      "path": "README.md",
+      "location": "line 1",
+      "term": "smart_meter",
+      "disposition": "manual_review_required",
+      "context": "# Smart-Meter Energy Load Forecasting",
+      "review": "descriptive dataset or workflow context"
+    },
+    {
+      "path": "README.md",
+      "location": "line 69",
+      "term": "smart_meter",
+      "disposition": "manual_review_required",
+      "context": "For the reproducible hosted version, see the [Kaggle notebook](https://www.kaggle.com/code/fouadiqbal/smart-meter-energy-load-forecasting).",
+      "review": "descriptive dataset or workflow context"
+    },
+    {
+      "path": "smart_meter_energy_load_forecasting.ipynb",
+      "location": "cell 1, source line 1",
+      "term": "smart_meter",
+      "disposition": "manual_review_required",
+      "context": "# Smart-Meter Energy Load Forecasting and Anomaly Detection",
+      "review": "descriptive dataset or workflow context"
+    },
+    {
+      "path": "smart_meter_energy_load_forecasting.ipynb",
+      "location": "cell 3, source line 1",
+      "term": "smart_meter",
+      "disposition": "manual_review_required",
+      "context": "print(\"Smart-meter ML project workspace is ready.\")",
+      "review": "descriptive dataset or workflow context"
+    },
+    {
+      "path": "smart_meter_energy_load_forecasting.ipynb",
+      "location": "cell 4, source line 1",
+      "term": "first",
+      "disposition": "manual_review_required",
+      "context": "## 1. Data Loading and First Inspection",
+      "review": "ordinary sequence label, not a priority claim"
+    },
+    {
+      "path": "smart_meter_energy_load_forecasting.ipynb",
+      "location": "cell 10, source line 7",
+      "term": "first",
+      "disposition": "manual_review_required",
+      "context": "print(\"First timestamp:\", df[\"Timestamp\"].min())",
+      "review": "ordinary sequence label, not a priority claim"
+    },
+    {
+      "path": "smart_meter_energy_load_forecasting.ipynb",
+      "location": "cell 44, source line 1",
+      "term": "first",
+      "disposition": "manual_review_required",
+      "context": "### First ML model result",
+      "review": "ordinary sequence label, not a priority claim"
+    },
+    {
+      "path": "firmware/esp8266_smart_meter/README.md",
+      "location": "line 1",
+      "term": "smart_meter",
+      "disposition": "manual_review_required",
+      "context": "# ESP8266 Smart-Meter Prototype",
+      "review": "descriptive dataset or workflow context"
+    },
+    {
+      "path": "firmware/esp8266_smart_meter/README.md",
+      "location": "line 178",
+      "term": "secure",
+      "disposition": "manual_review_required",
+      "context": "deployment, migrate to HTTPS with certificate validation or to a secured MQTT",
+      "review": "future security requirement, not a current capability claim"
+    }
+  ],
+  "unsupported_claims_remaining": [],
+  "stale_or_misleading_result_patterns": [],
+  "traceback_code_cells": [],
+  "approved_claim_boundary": "The project demonstrates reproducible numerical and threshold-decision portability for a compact model under complete 933-vector replay on one physical ESP8266, with measured model-kernel timing and whole-firmware resource accounting.",
+  "claims_not_supported": [
+    "calibrated smart-meter sensing or verified physical kWh",
+    "independently validated real-event anomaly detection",
+    "live on-device forecasting from a maintained lag buffer",
+    "end-to-end or network latency from the kernel benchmark",
+    "measured power or energy per inference",
+    "secure field deployment",
+    "cross-dataset or seasonal generalization",
+    "algorithmic novelty or a worldwide first"
+  ]
+}

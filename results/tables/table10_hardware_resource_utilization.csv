@@ -1,0 +1,5 @@
+﻿Resource,Normal used,Normal headroom,Validation used,Validation headroom
+Data RAM,"29,516 / 80,192 (36.81%)","50,676 (63.19%)","29,852 / 80,192 (37.23%)","50,340 (62.77%)"
+Instruction RAM,"60,343 / 65,536 (92.08%)","5,193 (7.92%)","60,343 / 65,536 (92.08%)","5,193 (7.92%)"
+Flash code,"257,796 / 1,048,576 (24.59%)","790,780 (75.41%)","298,132 / 1,048,576 (28.43%)","750,444 (71.57%)"
+Core numeric model state,104 B,Not a whole-firmware capacity measure,104 B,26 FP32 values; excludes code/metadata

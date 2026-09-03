@@ -1,0 +1,126 @@
+{
+  "phase": 4,
+  "experiment": "chronological_forecasting_baselines_normalized_case_study",
+  "units": "normalized dataset target units; physical kWh not established",
+  "dataset": {
+    "source": "https://www.kaggle.com/datasets/ziya07/smart-meter-electricity-consumption-dataset",
+    "csv_sha256": "D48DF940FD29444FB9222FC0B59CFDE632E147CCD1D49DC7BED9D5F9DC88F588",
+    "raw_rows": 5000,
+    "rows_after_lag_336": 4664
+  },
+  "split": {
+    "method": "single chronological 80/20 holdout",
+    "train_rows": 3731,
+    "test_rows": 933,
+    "train_start": "2024-01-08T00:00:00",
+    "train_end": "2024-03-25T17:00:00",
+    "test_start": "2024-03-25T17:30:00",
+    "test_end": "2024-04-14T03:30:00"
+  },
+  "features": [
+    "lag_1",
+    "lag_2",
+    "lag_48",
+    "lag_336",
+    "hour",
+    "day_of_week",
+    "month",
+    "is_weekend"
+  ],
+  "seed": 42,
+  "environment": {
+    "python": "3.13.2",
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "scikit_learn": "1.9.0"
+  },
+  "results_sorted_by_mae": [
+    {
+      "model": "compact_edge_linear",
+      "mae_normalized": 0.1307837086033585,
+      "rmse_normalized": 0.1623896726478911,
+      "smape_percent": 39.80242155921589,
+      "fit_seconds_observed": 0.011436300000241317,
+      "configuration": {
+        "kind": "standardized_linear_least_squares",
+        "training_rows": 2984,
+        "reserved_calibration_rows": 747,
+        "feature_count": 8,
+        "numerical_representation_in_python": "float64",
+        "deployment_representation": "float32 C++ constants"
+      }
+    },
+    {
+      "model": "linear_regression",
+      "mae_normalized": 0.1309595316424855,
+      "rmse_normalized": 0.16252889216802086,
+      "smape_percent": 39.8616291780066,
+      "fit_seconds_observed": 0.02283869999973831,
+      "configuration": {
+        "kind": "LinearRegression",
+        "fit_intercept": true,
+        "training_rows": 3731
+      }
+    },
+    {
+      "model": "random_forest",
+      "mae_normalized": 0.13276064180283353,
+      "rmse_normalized": 0.16521312471778615,
+      "smape_percent": 40.179140491414806,
+      "fit_seconds_observed": 1.2756845999992947,
+      "configuration": {
+        "kind": "RandomForestRegressor",
+        "n_estimators": 200,
+        "max_depth": 12,
+        "min_samples_leaf": 2,
+        "random_state": 42,
+        "training_rows": 3731
+      }
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "mae_normalized": 0.13609306570610727,
+      "rmse_normalized": 0.17010152773279763,
+      "smape_percent": 40.95305735218243,
+      "fit_seconds_observed": 0.8756439999997383,
+      "configuration": {
+        "kind": "HistGradientBoostingRegressor",
+        "learning_rate": 0.05,
+        "max_iter": 200,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 20,
+        "l2_regularization": 0.1,
+        "random_state": 42,
+        "training_rows": 3731
+      }
+    },
+    {
+      "model": "seasonal_naive_lag_48",
+      "mae_normalized": 0.18346276277255041,
+      "rmse_normalized": 0.23087820567199324,
+      "smape_percent": 56.37988969113673,
+      "fit_seconds_observed": 0.0,
+      "configuration": {
+        "kind": "seasonal_naive",
+        "lag": 48
+      }
+    },
+    {
+      "model": "persistence_lag_1",
+      "mae_normalized": 0.1881599532874608,
+      "rmse_normalized": 0.23224836798481957,
+      "smape_percent": 57.969401859432715,
+      "fit_seconds_observed": 0.0,
+      "configuration": {
+        "kind": "naive",
+        "lag": 1
+      }
+    }
+  ],
+  "limitations": [
+    "Single chronological holdout; rolling-origin validation is Phase 5.",
+    "All target values are normalized; physical kWh cannot be inferred.",
+    "This case study has undocumented measurement provenance.",
+    "Observed fit time is machine-dependent and is not a model-quality metric."
+  ]
+}

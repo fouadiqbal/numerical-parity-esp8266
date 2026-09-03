@@ -1,0 +1,449 @@
+{
+  "phase": 5,
+  "experiment": "five_fold_expanding_window_forecasting",
+  "forecast_mode": "rolling one-step-ahead; each lag uses an observation available before the prediction timestamp",
+  "units": "normalized dataset target units; physical kWh not established",
+  "dataset": {
+    "source": "https://www.kaggle.com/datasets/ziya07/smart-meter-electricity-consumption-dataset",
+    "csv_sha256": "D48DF940FD29444FB9222FC0B59CFDE632E147CCD1D49DC7BED9D5F9DC88F588",
+    "rows_after_lag_336": 4664
+  },
+  "fold_design": {
+    "folds": 5,
+    "initial_training_rows": 2264,
+    "calibration_rows_per_fold": 400,
+    "test_rows_per_fold": 400,
+    "non_overlapping_test_rows_total": 2000,
+    "training_window": "expanding",
+    "calibration_window": "fixed length, immediately after training",
+    "test_window": "fixed length, immediately after calibration"
+  },
+  "features": [
+    "lag_1",
+    "lag_2",
+    "lag_48",
+    "lag_336",
+    "hour",
+    "day_of_week",
+    "month",
+    "is_weekend"
+  ],
+  "seed": 42,
+  "environment": {
+    "python": "3.13.2",
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "scipy": "1.18.1",
+    "scikit_learn": "1.9.0"
+  },
+  "fold_results": [
+    {
+      "fold": 1,
+      "train_rows": 2264,
+      "calibration_rows": 400,
+      "test_rows": 400,
+      "train_start": "2024-01-08T00:00:00",
+      "train_end": "2024-02-24T03:30:00",
+      "calibration_start": "2024-02-24T04:00:00",
+      "calibration_end": "2024-03-03T11:30:00",
+      "test_start": "2024-03-03T12:00:00",
+      "test_end": "2024-03-11T19:30:00",
+      "model_metrics": {
+        "persistence_lag_1": {
+          "mae_normalized": 0.20239472030378403,
+          "rmse_normalized": 0.24925297803468613,
+          "smape_percent": 60.63959161974708
+        },
+        "seasonal_naive_lag_48": {
+          "mae_normalized": 0.20071594278678467,
+          "rmse_normalized": 0.24630330708107676,
+          "smape_percent": 59.930712392899785
+        },
+        "linear_regression": {
+          "mae_normalized": 0.14130070627223784,
+          "rmse_normalized": 0.1713683257923646,
+          "smape_percent": 42.193481019063135
+        },
+        "random_forest": {
+          "mae_normalized": 0.14174689747455105,
+          "rmse_normalized": 0.1725499722542111,
+          "smape_percent": 42.18813086453552
+        },
+        "hist_gradient_boosting": {
+          "mae_normalized": 0.14591878383629234,
+          "rmse_normalized": 0.17950285021132673,
+          "smape_percent": 43.40554395894425
+        },
+        "compact_edge_linear_float32": {
+          "mae_normalized": 0.14130070681788662,
+          "rmse_normalized": 0.17136832618916037,
+          "smape_percent": 42.19348120699935
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "train_rows": 2664,
+      "calibration_rows": 400,
+      "test_rows": 400,
+      "train_start": "2024-01-08T00:00:00",
+      "train_end": "2024-03-03T11:30:00",
+      "calibration_start": "2024-03-03T12:00:00",
+      "calibration_end": "2024-03-11T19:30:00",
+      "test_start": "2024-03-11T20:00:00",
+      "test_end": "2024-03-20T03:30:00",
+      "model_metrics": {
+        "persistence_lag_1": {
+          "mae_normalized": 0.1888714297790231,
+          "rmse_normalized": 0.239525261881864,
+          "smape_percent": 56.54908526485769
+        },
+        "seasonal_naive_lag_48": {
+          "mae_normalized": 0.19441509356505762,
+          "rmse_normalized": 0.24175619730712564,
+          "smape_percent": 58.460753905687014
+        },
+        "linear_regression": {
+          "mae_normalized": 0.1332695009975003,
+          "rmse_normalized": 0.1685469183682908,
+          "smape_percent": 39.39173889169895
+        },
+        "random_forest": {
+          "mae_normalized": 0.13391022649934572,
+          "rmse_normalized": 0.16896147279904242,
+          "smape_percent": 39.53129295651655
+        },
+        "hist_gradient_boosting": {
+          "mae_normalized": 0.14156050284000005,
+          "rmse_normalized": 0.17620470301357116,
+          "smape_percent": 41.60149165773849
+        },
+        "compact_edge_linear_float32": {
+          "mae_normalized": 0.1332695002857841,
+          "rmse_normalized": 0.16854691752548315,
+          "smape_percent": 39.39173879052113
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "train_rows": 3064,
+      "calibration_rows": 400,
+      "test_rows": 400,
+      "train_start": "2024-01-08T00:00:00",
+      "train_end": "2024-03-11T19:30:00",
+      "calibration_start": "2024-03-11T20:00:00",
+      "calibration_end": "2024-03-20T03:30:00",
+      "test_start": "2024-03-20T04:00:00",
+      "test_end": "2024-03-28T11:30:00",
+      "model_metrics": {
+        "persistence_lag_1": {
+          "mae_normalized": 0.18955126215923773,
+          "rmse_normalized": 0.23235311910921722,
+          "smape_percent": 59.05896653570931
+        },
+        "seasonal_naive_lag_48": {
+          "mae_normalized": 0.18568193772686634,
+          "rmse_normalized": 0.2287706985070632,
+          "smape_percent": 57.73491891219319
+        },
+        "linear_regression": {
+          "mae_normalized": 0.13056006023563632,
+          "rmse_normalized": 0.16379881652796202,
+          "smape_percent": 39.945120268332545
+        },
+        "random_forest": {
+          "mae_normalized": 0.13316993193186485,
+          "rmse_normalized": 0.16673294537036515,
+          "smape_percent": 40.511279059092985
+        },
+        "hist_gradient_boosting": {
+          "mae_normalized": 0.13653195004663876,
+          "rmse_normalized": 0.1718931438087405,
+          "smape_percent": 41.42930647456508
+        },
+        "compact_edge_linear_float32": {
+          "mae_normalized": 0.13056006065785958,
+          "rmse_normalized": 0.1637988169827621,
+          "smape_percent": 39.94512021758807
+        }
+      }
+    },
+    {
+      "fold": 4,
+      "train_rows": 3464,
+      "calibration_rows": 400,
+      "test_rows": 400,
+      "train_start": "2024-01-08T00:00:00",
+      "train_end": "2024-03-20T03:30:00",
+      "calibration_start": "2024-03-20T04:00:00",
+      "calibration_end": "2024-03-28T11:30:00",
+      "test_start": "2024-03-28T12:00:00",
+      "test_end": "2024-04-05T19:30:00",
+      "model_metrics": {
+        "persistence_lag_1": {
+          "mae_normalized": 0.1885447268293037,
+          "rmse_normalized": 0.22975190194328834,
+          "smape_percent": 58.81021452983778
+        },
+        "seasonal_naive_lag_48": {
+          "mae_normalized": 0.17788182472112532,
+          "rmse_normalized": 0.23002296132611924,
+          "smape_percent": 55.83776115654525
+        },
+        "linear_regression": {
+          "mae_normalized": 0.1321896670744317,
+          "rmse_normalized": 0.16058100285763807,
+          "smape_percent": 40.512615115490846
+        },
+        "random_forest": {
+          "mae_normalized": 0.13463714634465873,
+          "rmse_normalized": 0.1639997160744804,
+          "smape_percent": 40.97426431713864
+        },
+        "hist_gradient_boosting": {
+          "mae_normalized": 0.1411500482728829,
+          "rmse_normalized": 0.17112531874339632,
+          "smape_percent": 42.55630140194738
+        },
+        "compact_edge_linear_float32": {
+          "mae_normalized": 0.132189666922708,
+          "rmse_normalized": 0.16058100269435704,
+          "smape_percent": 40.512615070556016
+        }
+      }
+    },
+    {
+      "fold": 5,
+      "train_rows": 3864,
+      "calibration_rows": 400,
+      "test_rows": 400,
+      "train_start": "2024-01-08T00:00:00",
+      "train_end": "2024-03-28T11:30:00",
+      "calibration_start": "2024-03-28T12:00:00",
+      "calibration_end": "2024-04-05T19:30:00",
+      "test_start": "2024-04-05T20:00:00",
+      "test_end": "2024-04-14T03:30:00",
+      "model_metrics": {
+        "persistence_lag_1": {
+          "mae_normalized": 0.1881368716843506,
+          "rmse_normalized": 0.234447544859809,
+          "smape_percent": 57.42537979363425
+        },
+        "seasonal_naive_lag_48": {
+          "mae_normalized": 0.18535100794477435,
+          "rmse_normalized": 0.22987592775426466,
+          "smape_percent": 56.573065501678435
+        },
+        "linear_regression": {
+          "mae_normalized": 0.1319693000951942,
+          "rmse_normalized": 0.16555559005864098,
+          "smape_percent": 39.727561474348505
+        },
+        "random_forest": {
+          "mae_normalized": 0.13271523993768547,
+          "rmse_normalized": 0.16772212363430014,
+          "smape_percent": 39.760141498389615
+        },
+        "hist_gradient_boosting": {
+          "mae_normalized": 0.1354170835027362,
+          "rmse_normalized": 0.172385251604633,
+          "smape_percent": 40.41924026015373
+        },
+        "compact_edge_linear_float32": {
+          "mae_normalized": 0.13196929964994053,
+          "rmse_normalized": 0.16555558987456898,
+          "smape_percent": 39.72756134320496
+        }
+      }
+    }
+  ],
+  "summary_sorted_by_mean_fold_mae": [
+    {
+      "model": "compact_edge_linear_float32",
+      "fold_mae": {
+        "mean": 0.13385784686683577,
+        "sample_standard_deviation": 0.004271040410337341,
+        "ci95_lower": 0.12855464975444647,
+        "ci95_upper": 0.13916104397922507,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "fold_rmse": {
+        "mean": 0.16597013065326632,
+        "sample_standard_deviation": 0.004174610547673715,
+        "ci95_lower": 0.16078666702969818,
+        "ci95_upper": 0.17115359427683446,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "fold_smape": {
+        "mean": 40.354103325773906,
+        "sample_standard_deviation": 1.1061650533024374,
+        "ci95_lower": 38.98061800301712,
+        "ci95_upper": 41.72758864853069,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "pooled_test_metrics": {
+        "mae_normalized": 0.13385784686683574,
+        "rmse_normalized": 0.1660121265680375,
+        "smape_percent": 40.354103325773906
+      }
+    },
+    {
+      "model": "linear_regression",
+      "fold_mae": {
+        "mean": 0.13385784693500008,
+        "sample_standard_deviation": 0.0042710401655781435,
+        "ci95_lower": 0.12855465012651945,
+        "ci95_upper": 0.1391610437434807,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "fold_rmse": {
+        "mean": 0.1659701307209793,
+        "sample_standard_deviation": 0.004174610551328013,
+        "ci95_lower": 0.16078666709287373,
+        "ci95_upper": 0.17115359434908486,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "fold_smape": {
+        "mean": 40.35410335378679,
+        "sample_standard_deviation": 1.1061649315182764,
+        "ci95_lower": 38.98061818224502,
+        "ci95_upper": 41.727588525328564,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "pooled_test_metrics": {
+        "mae_normalized": 0.13385784693500005,
+        "rmse_normalized": 0.16601212663580686,
+        "smape_percent": 40.3541033537868
+      }
+    },
+    {
+      "model": "random_forest",
+      "fold_mae": {
+        "mean": 0.13523588843762116,
+        "sample_standard_deviation": 0.003712511127638701,
+        "ci95_lower": 0.13062619702750133,
+        "ci95_upper": 0.139845579847741,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "fold_rmse": {
+        "mean": 0.16799324602647986,
+        "sample_standard_deviation": 0.0031349387382555724,
+        "ci95_lower": 0.16410070545861358,
+        "ci95_upper": 0.17188578659434614,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "fold_smape": {
+        "mean": 40.59302173913467,
+        "sample_standard_deviation": 1.0627039091656574,
+        "ci95_lower": 39.27350055437327,
+        "ci95_upper": 41.91254292389607,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "pooled_test_metrics": {
+        "mae_normalized": 0.1352358884376212,
+        "rmse_normalized": 0.1680166449588477,
+        "smape_percent": 40.59302173913466
+      }
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "fold_mae": {
+        "mean": 0.14011567369971006,
+        "sample_standard_deviation": 0.004235368175266557,
+        "ci95_lower": 0.1348567695173436,
+        "ci95_upper": 0.14537457788207653,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "fold_rmse": {
+        "mean": 0.17422225347633355,
+        "sample_standard_deviation": 0.003542779294060456,
+        "ci95_lower": 0.16982331197331693,
+        "ci95_upper": 0.17862119497935017,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "fold_smape": {
+        "mean": 41.88237675066979,
+        "sample_standard_deviation": 1.1400822646154216,
+        "ci95_lower": 40.46677764770621,
+        "ci95_upper": 43.297975853633375,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "pooled_test_metrics": {
+        "mae_normalized": 0.14011567369971,
+        "rmse_normalized": 0.1742510678144411,
+        "smape_percent": 41.882376750669785
+      }
+    },
+    {
+      "model": "seasonal_naive_lag_48",
+      "fold_mae": {
+        "mean": 0.18880916134892167,
+        "sample_standard_deviation": 0.008864859820480612,
+        "ci95_lower": 0.17780198406070782,
+        "ci95_upper": 0.19981633863713552,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "fold_rmse": {
+        "mean": 0.23534581839512989,
+        "sample_standard_deviation": 0.008103151063638844,
+        "ci95_lower": 0.22528442744740299,
+        "ci95_upper": 0.24540720934285679,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "fold_smape": {
+        "mean": 57.70744237380073,
+        "sample_standard_deviation": 1.6041883885803052,
+        "ci95_lower": 55.71557940536405,
+        "ci95_upper": 59.69930534223741,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "pooled_test_metrics": {
+        "mae_normalized": 0.18880916134892167,
+        "rmse_normalized": 0.2354573912235536,
+        "smape_percent": 57.70744237380073
+      }
+    },
+    {
+      "model": "persistence_lag_1",
+      "fold_mae": {
+        "mean": 0.19149980215113982,
+        "sample_standard_deviation": 0.006112408740863714,
+        "ci95_lower": 0.18391024427530334,
+        "ci95_upper": 0.1990893600269763,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "fold_rmse": {
+        "mean": 0.2370661611657729,
+        "sample_standard_deviation": 0.007699577691125836,
+        "ci95_lower": 0.22750587274532907,
+        "ci95_upper": 0.2466264495862167,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "fold_smape": {
+        "mean": 58.496647548757224,
+        "sample_standard_deviation": 1.5769709603330972,
+        "ci95_lower": 56.5385794810988,
+        "ci95_upper": 60.45471561641565,
+        "ci_method": "two-sided Student-t interval over five fold metrics"
+      },
+      "pooled_test_metrics": {
+        "mae_normalized": 0.19149980215113982,
+        "rmse_normalized": 0.23716616868173584,
+        "smape_percent": 58.49664754875723
+      }
+    }
+  ],
+  "edge_float32_vs_linear_float64": {
+    "tested_predictions": 2000,
+    "mean_absolute_prediction_difference": 8.655967467380288e-09,
+    "maximum_absolute_prediction_difference": 2.7524578227744456e-08
+  },
+  "limitations": [
+    "Only five folds are available in this short 104-day normalized case study.",
+    "Student-t intervals over five folds are imprecise and folds are temporally dependent.",
+    "The evaluation is rolling one-step-ahead, not a 400-step recursive forecast.",
+    "The calibration blocks are reserved for later anomaly-threshold analysis.",
+    "Official-dataset external validation remains unrun."
+  ]
+}

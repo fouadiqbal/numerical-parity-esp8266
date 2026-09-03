@@ -1,0 +1,108 @@
+{
+  "schema_version": 2,
+  "benchmark_date_local": "2026-09-03",
+  "device": "ESP8266EX NodeMCU 1.0",
+  "serial_port": "COM11",
+  "model": "compact_standardized_linear_forecaster",
+  "model_fingerprint_sha256": "7E7F91C2B5597F57F7801830D9719B2FDB9A5987283FB0EFCFE2481F4B323003",
+  "target_units": "normalized dataset units; physical kWh not established",
+  "validation_mode": "replayed fixed held-out feature vectors from program flash",
+  "source_capture": {
+    "path": "data/esp8266/esp8266_serial_20260903_025705.jsonl",
+    "sha256": "E13D469866C635EC58C1BFD515DC4595EF8D4559AFB900D040449F133D4A80A8",
+    "first_capture_utc": "2026-09-02T20:57:14.7965627Z",
+    "last_capture_utc": "2026-09-02T20:58:34.7952202Z"
+  },
+  "spot_check": {
+    "passed": 8,
+    "total": 8
+  },
+  "timing": {
+    "batches": 30,
+    "inferences_per_batch": 2000,
+    "average_inference_us_across_batches": 50.427,
+    "minimum_batch_average_us": 50.361,
+    "maximum_batch_average_us": 50.7,
+    "batch_average_inference_us": [
+      50.501999,
+      50.401001,
+      50.700001,
+      50.532001,
+      50.404499,
+      50.421001,
+      50.396,
+      50.396999,
+      50.442501,
+      50.4715,
+      50.412498,
+      50.369999,
+      50.372002,
+      50.526001,
+      50.366001,
+      50.3615,
+      50.388,
+      50.363499,
+      50.3675,
+      50.4105,
+      50.369999,
+      50.406502,
+      50.545502,
+      50.4245,
+      50.454498,
+      50.397999,
+      50.3965,
+      50.398998,
+      50.398499,
+      50.415001
+    ]
+  },
+  "full_test_validation": {
+    "vectors": 933,
+    "prediction_parity_passed": 933,
+    "anomaly_parity_passed": 933,
+    "max_prediction_difference_normalized": 8.9e-08,
+    "device_mae_normalized": 0.130783707,
+    "device_rmse_normalized": 0.162389636,
+    "true_positive": 8,
+    "false_positive": 0,
+    "false_negative": 44,
+    "true_negative": 881,
+    "validation_elapsed_us": 60122,
+    "validation_elapsed_us_per_vector": 64.43944265809218
+  },
+  "whole_firmware_resources": {
+    "passed": true,
+    "ram_bytes": 29852,
+    "ram_available_bytes": 80192,
+    "ram_reported_percent": 37,
+    "iram_bytes": 60343,
+    "iram_available_bytes": 65536,
+    "iram_reported_percent": 92,
+    "flash_code_bytes": 298132,
+    "flash_code_available_bytes": 1048576,
+    "flash_code_reported_percent": 28
+  },
+  "telemetry_during_capture": {
+    "records": 5,
+    "all_http_200": true,
+    "thing_speak_entry_ids": [
+      386,
+      387,
+      388,
+      389,
+      390
+    ],
+    "raw_adc_range": [
+      9,
+      17
+    ],
+    "warning": "The unconnected/uncalibrated ADC telemetry is a connectivity check, not a physical energy measurement."
+  },
+  "limitations": [
+    "Held-out vectors were replayed from program flash.",
+    "No calibrated electrical sensing front end was used.",
+    "No live lag-history buffer generated the model inputs.",
+    "Timing covers model batches, not sensing-to-cloud latency.",
+    "HTTP telemetry is not a secure-channel validation."
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "phase": 10,
+  "date": "2026-09-03",
+  "fqbn": "esp8266:esp8266:nodemcuv2",
+  "normal_build": {
+    "passed": true,
+    "ram_bytes": 29340,
+    "ram_available_bytes": 80192,
+    "ram_reported_percent": 36,
+    "iram_bytes": 60343,
+    "iram_available_bytes": 65536,
+    "iram_reported_percent": 92,
+    "flash_code_bytes": 257508,
+    "flash_code_available_bytes": 1048576,
+    "flash_code_reported_percent": 24
+  },
+  "full_validation_build": {
+    "passed": true,
+    "validation_vectors": 933,
+    "ram_bytes": 29676,
+    "ram_available_bytes": 80192,
+    "ram_reported_percent": 37,
+    "iram_bytes": 60343,
+    "iram_available_bytes": 65536,
+    "iram_reported_percent": 92,
+    "flash_code_bytes": 297844,
+    "flash_code_available_bytes": 1048576,
+    "flash_code_reported_percent": 28
+  },
+  "commands": [
+    "powershell -ExecutionPolicy Bypass -File tools/esp8266_workflow.ps1 -Action Build",
+    "powershell -ExecutionPolicy Bypass -File tools/esp8266_workflow.ps1 -Action Build -FullValidation"
+  ]
+}

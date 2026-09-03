@@ -1,0 +1,4 @@
+﻿Layer,Target,Vectors,Prediction matches,Max. |difference|,Decision matches,Evidence
+Reference,Python float64,933,Reference,Reference,Reference,MAE=0.130784; RMSE=0.162390
+Host export,"C++17 FP32, x86-64",933,933/933,7.557e-08,933/933,Generated header vs Python reference
+Physical HIL,ESP8266EX NodeMCU 1.0,933,933/933,8.900e-08,933/933,Replayed held-out vectors; mean kernel time 50.427 µs

@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software or reproducibility package, please cite it using this metadata."
+type: software
+title: "Smart-Meter Forecasting and ESP8266 Edge-ML Reproducibility Package"
+version: 0.2.0
+date-released: "2026-09-03"
+authors:
+  - family-names: Iqbal
+    given-names: "Md. Fouad"
+repository-code: "https://github.com/fouadiqbal/smart-meter-energy-load-forecasting"
+url: "https://github.com/fouadiqbal/smart-meter-energy-load-forecasting"
+license: MIT
+keywords:
+  - ESP8266
+  - embedded machine learning
+  - load forecasting
+  - hardware-in-the-loop validation
+  - reproducible research

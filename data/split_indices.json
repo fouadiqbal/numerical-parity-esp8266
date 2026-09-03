@@ -1,0 +1,146 @@
+{
+  "index_convention": "zero-based, half-open [start, stop), after chronological sort and lag-row removal",
+  "raw_rows": 5000,
+  "maximum_lag_rows_removed": 336,
+  "model_rows": 4664,
+  "model_row_to_raw_row": "model index i corresponds to sorted raw row i + 336",
+  "edge_partition": {
+    "fit_half_open": [
+      0,
+      2984
+    ],
+    "calibration_half_open": [
+      2984,
+      3731
+    ],
+    "test_half_open": [
+      3731,
+      4664
+    ],
+    "timestamps": {
+      "fit_start": "2024-01-08T00:00:00",
+      "fit_end": "2024-03-10T03:30:00",
+      "calibration_start": "2024-03-10T04:00:00",
+      "calibration_end": "2024-03-25T17:00:00",
+      "test_start": "2024-03-25T17:30:00",
+      "test_end": "2024-04-14T03:30:00"
+    }
+  },
+  "walk_forward_folds": [
+    {
+      "fold": 1,
+      "train_half_open": [
+        0,
+        2264
+      ],
+      "calibration_half_open": [
+        2264,
+        2664
+      ],
+      "test_half_open": [
+        2664,
+        3064
+      ],
+      "timestamps": {
+        "train_start": "2024-01-08T00:00:00",
+        "train_end": "2024-02-24T03:30:00",
+        "calibration_start": "2024-02-24T04:00:00",
+        "calibration_end": "2024-03-03T11:30:00",
+        "test_start": "2024-03-03T12:00:00",
+        "test_end": "2024-03-11T19:30:00"
+      }
+    },
+    {
+      "fold": 2,
+      "train_half_open": [
+        0,
+        2664
+      ],
+      "calibration_half_open": [
+        2664,
+        3064
+      ],
+      "test_half_open": [
+        3064,
+        3464
+      ],
+      "timestamps": {
+        "train_start": "2024-01-08T00:00:00",
+        "train_end": "2024-03-03T11:30:00",
+        "calibration_start": "2024-03-03T12:00:00",
+        "calibration_end": "2024-03-11T19:30:00",
+        "test_start": "2024-03-11T20:00:00",
+        "test_end": "2024-03-20T03:30:00"
+      }
+    },
+    {
+      "fold": 3,
+      "train_half_open": [
+        0,
+        3064
+      ],
+      "calibration_half_open": [
+        3064,
+        3464
+      ],
+      "test_half_open": [
+        3464,
+        3864
+      ],
+      "timestamps": {
+        "train_start": "2024-01-08T00:00:00",
+        "train_end": "2024-03-11T19:30:00",
+        "calibration_start": "2024-03-11T20:00:00",
+        "calibration_end": "2024-03-20T03:30:00",
+        "test_start": "2024-03-20T04:00:00",
+        "test_end": "2024-03-28T11:30:00"
+      }
+    },
+    {
+      "fold": 4,
+      "train_half_open": [
+        0,
+        3464
+      ],
+      "calibration_half_open": [
+        3464,
+        3864
+      ],
+      "test_half_open": [
+        3864,
+        4264
+      ],
+      "timestamps": {
+        "train_start": "2024-01-08T00:00:00",
+        "train_end": "2024-03-20T03:30:00",
+        "calibration_start": "2024-03-20T04:00:00",
+        "calibration_end": "2024-03-28T11:30:00",
+        "test_start": "2024-03-28T12:00:00",
+        "test_end": "2024-04-05T19:30:00"
+      }
+    },
+    {
+      "fold": 5,
+      "train_half_open": [
+        0,
+        3864
+      ],
+      "calibration_half_open": [
+        3864,
+        4264
+      ],
+      "test_half_open": [
+        4264,
+        4664
+      ],
+      "timestamps": {
+        "train_start": "2024-01-08T00:00:00",
+        "train_end": "2024-03-28T11:30:00",
+        "calibration_start": "2024-03-28T12:00:00",
+        "calibration_end": "2024-04-05T19:30:00",
+        "test_start": "2024-04-05T20:00:00",
+        "test_end": "2024-04-14T03:30:00"
+      }
+    }
+  ]
+}

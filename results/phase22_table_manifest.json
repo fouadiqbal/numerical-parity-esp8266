@@ -1,0 +1,234 @@
+{
+  "phase": 22,
+  "generated_utc": "2026-09-03T09:35:58.032802+00:00",
+  "generator": "tools/run_phase22_tables.py",
+  "table_count": 11,
+  "main_paper_tables": [
+    1,
+    5,
+    7,
+    9,
+    10,
+    11
+  ],
+  "supplementary_tables": [
+    2,
+    3,
+    4,
+    6,
+    8
+  ],
+  "submission_blocker": null,
+  "tables": [
+    {
+      "number": 1,
+      "slug": "dataset_characteristics",
+      "caption": "Characteristics of the normalized smart-meter development dataset.",
+      "placement": "main",
+      "status": "complete",
+      "row_count": 9,
+      "csv": "tables/table01_dataset_characteristics.csv",
+      "sources": [
+        "outputs/dataset_integrity.json",
+        "outputs/phase4_forecasting_results.json"
+      ]
+    },
+    {
+      "number": 2,
+      "slug": "forecasting_models",
+      "caption": "Forecasting models and prespecified configurations.",
+      "placement": "supplementary",
+      "status": "complete",
+      "row_count": 6,
+      "csv": "tables/table02_forecasting_models.csv",
+      "sources": [
+        "outputs/phase4_forecasting_results.json"
+      ]
+    },
+    {
+      "number": 3,
+      "slug": "chronological_split_configuration",
+      "caption": "Chronological holdout and walk-forward split configurations.",
+      "placement": "supplementary",
+      "status": "complete",
+      "row_count": 7,
+      "csv": "tables/table03_chronological_split_configuration.csv",
+      "sources": [
+        "outputs/phase4_forecasting_results.json",
+        "outputs/phase5_walk_forward_results.json"
+      ]
+    },
+    {
+      "number": 4,
+      "slug": "forecasting_results",
+      "caption": "Single chronological holdout forecasting results.",
+      "placement": "supplementary",
+      "status": "complete",
+      "row_count": 6,
+      "csv": "tables/table04_forecasting_results.csv",
+      "sources": [
+        "outputs/phase4_forecasting_results.json"
+      ]
+    },
+    {
+      "number": 5,
+      "slug": "walk_forward_results",
+      "caption": "Five-fold expanding-window forecasting performance.",
+      "placement": "main",
+      "status": "complete",
+      "row_count": 6,
+      "csv": "tables/table05_walk_forward_results.csv",
+      "sources": [
+        "outputs/phase5_walk_forward_results.json"
+      ]
+    },
+    {
+      "number": 6,
+      "slug": "feature_ablation",
+      "caption": "Compact FP32 model feature-group ablation across five temporal folds.",
+      "placement": "supplementary",
+      "status": "complete",
+      "row_count": 6,
+      "csv": "tables/table06_feature_ablation.csv",
+      "sources": [
+        "outputs/phase7_feature_ablation.json"
+      ]
+    },
+    {
+      "number": 7,
+      "slug": "anomaly_detection_results",
+      "caption": "Residual and isolation-forest anomaly-method agreement with supplied labels.",
+      "placement": "main",
+      "status": "complete",
+      "row_count": 5,
+      "csv": "tables/table07_anomaly_detection_results.csv",
+      "sources": [
+        "outputs/phase9_anomaly_methods.json"
+      ]
+    },
+    {
+      "number": 8,
+      "slug": "threshold_sensitivity",
+      "caption": "Static residual-threshold sensitivity on the chronological test set.",
+      "placement": "supplementary",
+      "status": "complete",
+      "row_count": 6,
+      "csv": "tables/table08_threshold_sensitivity.csv",
+      "sources": [
+        "outputs/phase8_threshold_sensitivity.json"
+      ]
+    },
+    {
+      "number": 9,
+      "slug": "esp8266_numerical_parity",
+      "caption": "Numerical and anomaly-decision parity across Python, host C++, and physical ESP8266 execution.",
+      "placement": "main",
+      "status": "complete",
+      "row_count": 3,
+      "csv": "tables/table09_esp8266_numerical_parity.csv",
+      "sources": [
+        "outputs/phase4_forecasting_results.json",
+        "outputs/tinyml_cpp_parity.json",
+        "outputs/tinyml_device_benchmark_v2.json",
+        "outputs/phase12_device_timing_distribution.json"
+      ]
+    },
+    {
+      "number": 10,
+      "slug": "hardware_resource_utilization",
+      "caption": "ESP8266 resource utilization for normal and full-validation firmware.",
+      "placement": "main",
+      "status": "complete",
+      "row_count": 4,
+      "csv": "tables/table10_hardware_resource_utilization.csv",
+      "sources": [
+        "outputs/phase13_resource_analysis.json"
+      ]
+    },
+    {
+      "number": 11,
+      "slug": "comparison_with_related_studies",
+      "caption": "Comparison with closely related forecasting, anomaly-detection, and edge-deployment studies.",
+      "placement": "main",
+      "status": "complete_verified_phase23",
+      "row_count": 11,
+      "csv": "tables/table11_comparison_with_related_studies.csv",
+      "sources": [
+        "outputs/phase23_related_work.json",
+        "references/references.bib"
+      ]
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "tables/table01_dataset_characteristics.csv",
+      "bytes": 820,
+      "sha256": "6D8C1CB7123997FE51701F56E9D82B2272DCF69C05B470CECDEEBA61522F02C7"
+    },
+    {
+      "path": "tables/table02_forecasting_models.csv",
+      "bytes": 514,
+      "sha256": "7A19ABA3127C3E9BC32E6F1132D74B93D1F9C1A6977BB37AB1204C7592515040"
+    },
+    {
+      "path": "tables/table03_chronological_split_configuration.csv",
+      "bytes": 626,
+      "sha256": "A4D113D1196DBBF360D4A6DFC8BD8E296049C3B2DC8E2D9F87733BEBF6EC7258"
+    },
+    {
+      "path": "tables/table04_forecasting_results.csv",
+      "bytes": 373,
+      "sha256": "6C0A8E1536F91DEB7C4C04ACE5CA609F523598FE3D453DF432D79E5E3D4BEEEA"
+    },
+    {
+      "path": "tables/table05_walk_forward_results.csv",
+      "bytes": 638,
+      "sha256": "2ECEE1B2A63C0CE6C7F186608E036BDB6CFC0F106ACABFE707161B2647CCD691"
+    },
+    {
+      "path": "tables/table06_feature_ablation.csv",
+      "bytes": 572,
+      "sha256": "5629E5B071C946E0033AE71A9D6A209D23BE264809267E09C3D6FF9D647D1C20"
+    },
+    {
+      "path": "tables/table07_anomaly_detection_results.csv",
+      "bytes": 386,
+      "sha256": "D03EB763721823D7CDBE97C40CE6A6B5B0DA2D1BCE3F38D7742238F7242C26C5"
+    },
+    {
+      "path": "tables/table08_threshold_sensitivity.csv",
+      "bytes": 379,
+      "sha256": "E9E1A7E7243F98686E78C96B4E61D6279B105F73C881EE4D07ECCF8210D52508"
+    },
+    {
+      "path": "tables/table09_esp8266_numerical_parity.csv",
+      "bytes": 398,
+      "sha256": "02A9EEA7248C45B81659F9140F2A8DD55DEAD376DC81B286D9045C0B86C2FFBD"
+    },
+    {
+      "path": "tables/table10_hardware_resource_utilization.csv",
+      "bytes": 507,
+      "sha256": "BA50F02DA65875A4722E7C513C4B82CCFDE5358F1D138D6053D4BD5923D4D239"
+    },
+    {
+      "path": "tables/table11_comparison_with_related_studies.csv",
+      "bytes": 4604,
+      "sha256": "4DB741817DE5E40F0339104D6A6C900254175F6C17E2E5DF4480CC8CD2013F97"
+    },
+    {
+      "path": "tables/publication_tables.md",
+      "bytes": 15875,
+      "sha256": "87022C15A88D8BFE03161F8B2B62C34A19A97F1DE45CB37CB5CA04112DA40602"
+    },
+    {
+      "path": "tables/publication_tables.tex",
+      "bytes": 18237,
+      "sha256": "24BA94606FFFFA04F65248B42087A5D227A7C39DB2CD85BED001E26DFF09182D"
+    },
+    {
+      "path": "tables/publication_tables_standalone.tex",
+      "bytes": 172,
+      "sha256": "50AD963D541726C6E8FAAA1EF13796F0583C656BCE41996DB6A9562C6CBC1047"
+    }
+  ]
+}
