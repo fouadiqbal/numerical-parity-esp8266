@@ -5,8 +5,8 @@ Build date: 2026-09-03
 
 ## Deliverables
 
-- LaTeX source: `manuscript/smart_meter_esp8266_edge_ml.tex`
-- Compiled paper: `manuscript/smart_meter_esp8266_edge_ml.pdf`
+- Submitted conference paper: `manuscript/smart_meter_esp8266_edge_ml.pdf`
+- Earlier repository implementation source: `manuscript/smart_meter_esp8266_edge_ml_repository_source.tex`
 - BibTeX library: `references/references.bib`
 - Build notes: `manuscript/README.md`
 - Validation record: `outputs/phase27_final_paper_validation.json`
@@ -19,7 +19,7 @@ The ESP32 field-validation section is intentionally reserved and contains no fab
 
 ## Included publication material
 
-- 9 manuscript pages;
+- 6 conference-paper pages;
 - 13 bibliography entries;
 - 4 numbered tables;
 - 5 numbered figure environments using 6 generated figure images;
@@ -31,6 +31,8 @@ The ESP32 field-validation section is intentionally reserved and contains no fab
 
 ## Build and quality checks
 
-The PDF was compiled successfully with Tectonic 0.17.0 using the project BibTeX library. The final log contains no unresolved references, multiply defined labels, overfull boxes, or missing-character warnings. All nine pages were rendered to images and inspected; no clipping, overlap, missing content, or unreadable tables/figures were found.
+The submitted PDF was rendered to six page images and visually inspected; no clipping, overlap, missing content, or unreadable tables/figures were found. Its 13 references and six embedded figures are retained for reviewer access.
 
-The source can also be opened in TeXstudio and compiled with the standard `pdflatex`/`bibtex` sequence documented in `manuscript/README.md`.
+The submitted PDF is the authoritative conference version. The earlier
+repository implementation source is retained separately and is explicitly
+labelled as a source snapshot in `manuscript/README.md`.

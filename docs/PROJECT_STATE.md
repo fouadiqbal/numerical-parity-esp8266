@@ -113,8 +113,8 @@ This project evaluates a smart-meter dataset in Python, exports a compact standa
 - Phase 26 final claims audit: `docs/PHASE_26_FINAL_CLAIMS_AUDIT.md`
 - Phase 26 machine-readable audit: `outputs/phase26_claims_audit.json`
 - Phase 27 final-paper report: `docs/PHASE_27_FINAL_PAPER.md`
-- Phase 27 LaTeX source: `manuscript/smart_meter_esp8266_edge_ml.tex`
-- Phase 27 compiled paper: `manuscript/smart_meter_esp8266_edge_ml.pdf`
+- Submitted conference paper: `manuscript/smart_meter_esp8266_edge_ml.pdf`
+- Earlier Phase 27 implementation source: `manuscript/smart_meter_esp8266_edge_ml_repository_source.tex`
 - Phase 27 validation record: `outputs/phase27_final_paper_validation.json`
 
 ## Files that must remain private or regenerated

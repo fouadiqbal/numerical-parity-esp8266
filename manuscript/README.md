@@ -1,14 +1,19 @@
-# LaTeX manuscript
+# Conference submission
 
-Main source: `smart_meter_esp8266_edge_ml.tex`
+The authoritative public paper is `smart_meter_esp8266_edge_ml.pdf`. It is the
+six-page conference version submitted by the author, titled **Numerical-Parity
+Transfer of a Compact Load-Forecasting and Residual-Decision Model to
+ESP8266**.
 
-Compile from this directory so that the relative figure and bibliography paths resolve:
+The PDF is self-contained: all six paper figures are embedded. The same figures
+are also retained in `../figures/` for review and reproducibility.
 
-```bash
-pdflatex smart_meter_esp8266_edge_ml.tex
-bibtex smart_meter_esp8266_edge_ml
-pdflatex smart_meter_esp8266_edge_ml.tex
-pdflatex smart_meter_esp8266_edge_ml.tex
-```
+`smart_meter_esp8266_edge_ml_repository_source.tex` is the earlier repository
+implementation source used to generate the experiments. It is retained for
+auditability but is not presented as the exact camera-ready LaTeX source of the
+submitted PDF. This distinction prevents a reviewer from mistaking the
+repository source snapshot for the conference-layout source.
 
-The paper reports normalized target units because the source dataset does not provide an inverse transformation. The ESP32 field-validation section is intentionally reserved until calibrated hardware experiments exist.
+The paper reports normalized target units because the source dataset does not
+provide inverse-scaling metadata. The ESP32 field-validation extension remains
+explicitly reserved until calibrated hardware experiments exist.

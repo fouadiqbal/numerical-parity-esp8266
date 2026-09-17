@@ -13,7 +13,7 @@ This package reproduces the project's bounded claim: a compact nine-parameter fo
 - `figures/`: 10 figures in PNG, PDF, and SVG;
 - `tests/`: host-C++ and Arduino size-test sources;
 - `references/`: verified Phase 23 BibTeX library;
-- `manuscript/`: the final LaTeX source, compiled PDF, and build instructions;
+- `manuscript/`: the authoritative six-page conference PDF, retained implementation source, and review notes;
 - `docs/`: phase reports and evidence boundaries.
 
 ## Exact environment
