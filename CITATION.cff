@@ -16,3 +16,11 @@ keywords:
   - load forecasting
   - hardware-in-the-loop validation
   - reproducible research
+preferred-citation:
+  type: article
+  title: "Numerical-Parity Transfer of a Compact Load-Forecasting and Residual-Decision Model to ESP8266"
+  authors:
+    - family-names: Iqbal
+      given-names: "Md. Fouad"
+  year: 2026
+  url: "https://github.com/fouadiqbal/smart-meter-energy-load-forecasting/blob/main/manuscript/smart_meter_esp8266_edge_ml.pdf"
